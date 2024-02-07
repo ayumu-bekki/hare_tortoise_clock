@@ -98,7 +98,7 @@ void StepperMotorTask::AddExecInfo(StepperMotorExecInfo *const exec_info) {
 }
 
 void StepperMotorTask::EmergencyStop() {
-  ESP_LOGI(TAG, "EmergencyStop");
+  ESP_LOGI(TAG, "Stepper Motor. Add Queue EmergencyStop");
   motor_control_queue_.Send(EventType::EMERGENCY_STOP);
 }
 

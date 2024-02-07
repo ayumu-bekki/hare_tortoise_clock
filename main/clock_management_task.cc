@@ -111,6 +111,15 @@ void ClockManagementTask::Update() {
     clock_status_ = STATUS_SETTING_WAIT;
 
     ESP_LOGI(TAG, "Finish Initialize.");
+  } else if (clock_status_ == STATUS_SETTING) {
+    // HourとMinuteを同時に動かす
+    if (!SetBothPosition(CalcHourPos(hour_), NORMAL_MOVE_HZ,
+                         CalcMinutePos(minute_), NORMAL_MOVE_HZ)) {
+      ESP_LOGE(TAG, "Failed Motor Error.");
+      clock_status_ = STATUS_ERROR;
+      return;
+    }
+    clock_status_ = STATUS_ENABLE;
 
   } else if (clock_status_ == STATUS_ENABLE) {
     const std::tm time_info = Util::GetLocalTime();
@@ -255,7 +264,6 @@ void ClockManagementTask::EmergencyStop() {
   if (stepper_motor_minute_) {
     stepper_motor_minute_->EmergencyStop();
   }
-  clock_status_ = STATUS_ERROR;
 }
 
 MoveResult ClockManagementTask::SetHourPosition(const uint32_t position_left_mm,
@@ -358,7 +366,7 @@ void ClockManagementTask::SetUnixTime(const std::time_t epoc) {
   if (clock_status_ == STATUS_SETTING_WAIT || clock_status_ == STATUS_ENABLE) {
     ESP_LOGI(TAG, "Begin Set Time ----------");
 
-    // 設定中状態にして、タスクでは何も処理しないようにする
+    // 設定中状態
     clock_status_ = STATUS_SETTING;
 
     Util::SetSystemTime(epoc);
@@ -369,19 +377,9 @@ void ClockManagementTask::SetUnixTime(const std::time_t epoc) {
     hour_ = time_info.tm_hour % HALF_DAY_HOUR;
     minute_ = time_info.tm_min;
 
-    // HourとMinuteを同時に動かす
-    if (!SetBothPosition(CalcHourPos(hour_), NORMAL_MOVE_HZ,
-                         CalcMinutePos(minute_), NORMAL_MOVE_HZ)) {
-      ESP_LOGE(TAG, "Failed Motor Error.");
-      clock_status_ = STATUS_ERROR;
-      return;
-    }
-
     // Monitoring LED OFF
     GPIO::SetLevel(static_cast<gpio_num_t>(CONFIG_MONITORING_OUTPUT_GPIO_NO),
                    0);
-
-    clock_status_ = STATUS_ENABLE;
 
     ESP_LOGI(TAG, "Finish Set Time ----------");
   }
