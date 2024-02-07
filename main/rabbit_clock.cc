@@ -14,7 +14,7 @@
 #include "gpio_control.h"
 #include "logger.h"
 #include "util.h"
-// #include "version.h"
+#include "version.h"
 #include "ble_service_task.h"
 
 namespace RabbitClockSystem {
@@ -27,7 +27,7 @@ void RabbitClock::Start() {
   // Initialize Log
   Logger::InitializeLogLevel();
 
-  ESP_LOGI(TAG, "Startup Rabbit Clock");
+  ESP_LOGI(TAG, "Startup Rabbit Clock. Version:%s", std::string(GIT_VERSION).c_str());
 
   // Monitoring LED Init And ON
   GPIO::InitOutput(static_cast<gpio_num_t>(CONFIG_MONITORING_OUTPUT_GPIO_NO),
