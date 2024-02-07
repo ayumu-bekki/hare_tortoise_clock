@@ -8,7 +8,6 @@ idf_component_register(SRCS "main.cc"
                             "clock_management_task.cc"
                             "stepper_motor_task.cc"
                             "stepper_motor_util.cc"
-                            "ble_service_task.cc"
                             "ble_services.cc"
                     INCLUDE_DIRS "")
 

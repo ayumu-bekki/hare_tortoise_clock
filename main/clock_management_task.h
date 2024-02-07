@@ -12,8 +12,6 @@
 #include "stepper_motor_task.h"
 #include "task.h"
 
-#include <freertos/FreeRTOS.h>
-
 namespace RabbitClockSystem {
 
 class ClockManagementTask final : public Task {
