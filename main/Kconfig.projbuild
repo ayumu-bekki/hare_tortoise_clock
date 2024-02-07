@@ -1,0 +1,88 @@
+menu "Rabbit Clock System Configuration"
+
+    config LOCAL_TIME_ZONE
+        string "Local Time Zone"
+        default "JST-9"
+        help
+            Time zone of the region to be used
+
+    config MONITORING_OUTPUT_GPIO_NO
+        int "Monitoring Output GPIO No"
+        default 19
+        help
+            GPIO number for monitoring signals
+
+    config HOUR_HAND_ENABLE_OUTPUT_GPIO_NO
+        int "Hour Hand enable (A) Output GPIO No"
+        default 25
+        help
+            GPIO number
+
+    config HOUR_HAND_STEP_OUTPUT_GPIO_NO
+        int "Hour Hand step (A) Output GPIO No"
+        default 26
+        help
+            GPIO number 
+
+    config HOUR_HAND_DIR_OUTPUT_GPIO_NO
+        int "Hour Hand dir (A) Output GPIO No"
+        default 27
+        help
+            GPIO number
+
+    config HOUR_HAND_RIGHT_LIMIT_INPUT_GPIO_NO
+        int "Hour Hand right limit (A) input GPIO No"
+        default 14
+        help
+            GPIO number
+
+    config HOUR_HAND_LEFT_LIMIT_INPUT_GPIO_NO
+        int "Hour Hand left limit (A) input GPIO No"
+        default 12
+        help
+            GPIO number
+
+    config MINUTE_HAND_ENABLE_OUTPUT_GPIO_NO
+        int "Minute Hand enable (B) Output GPIO No"
+        default 18
+        help
+            GPIO number
+
+    config MINUTE_HAND_STEP_OUTPUT_GPIO_NO
+        int "Minute Hand step (B) Output GPIO No"
+        default 5 
+        help
+            GPIO number 
+
+    config MINUTE_HAND_DIR_OUTPUT_GPIO_NO
+        int "Minute Hand dir (B) Output GPIO No"
+        default 17
+        help
+            GPIO number
+
+    config MINUTE_HAND_RIGHT_LIMIT_INPUT_GPIO_NO
+        int "Minute Hand right limit (B) input GPIO No"
+        default 16
+        help
+            GPIO number
+
+    config MINUTE_HAND_LEFT_LIMIT_INPUT_GPIO_NO
+        int "Minute Hand left limit (B) input GPIO No"
+        default 4
+        help
+            GPIO number
+
+    config STEPPER_MOTOR_STEP_DIVIDE
+        int "Stepper motor step deivide"
+        default 16
+        help
+            stepper motor stsep div (fullstep:1 half-step:2 1/16step:16)
+
+    config IS_STEPPER_MOTOR_ROTATE_RIGHT_IS_DIR_UP
+        bool "Clockwise when DIR is UP"
+        default y
+        help
+            stepper motor driver clockwise flag
+
+
+endmenu

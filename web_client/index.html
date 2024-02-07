@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=700, maximum-scale=1.0, user-scalable=yes">
+  <title>Rabbit Clock</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="bluejelly.js"></script>
+  <script>
+    let ble = new BlueJelly();
+
+    var getUnixTime = function() {
+      return BigInt(new Date().getTime()) / 1000n;
+    };
+
+    window.onload = function() {
+      ble.setUUID("RabbitClockTimeChar", "f5c85862-dd4b-4874-9089-3b9e8bcb7099", "157c64df-ca4b-4647-b26b-4ddc2ab42797");
+      ble.setUUID("RabbitClockCommandChar", "f5c85862-dd4b-4874-9089-3b9e8bcb7099", "bd902d82-f4bd-45c8-baf8-040b3d877abe");
+
+      document.getElementById('connect').addEventListener('click', function() {
+        return (ble.scan('RabbitClockTimeChar'))
+        .then( () => {
+          return ble.connectGATT('RabbitClockTimeChar');
+        });
+      });
+
+      document.getElementById('update_time').addEventListener('click', function() {
+        var buffer = new ArrayBuffer(8);
+        var view = new DataView(buffer);
+        view.setBigUint64(0, getUnixTime());
+        ble.write('RabbitClockTimeChar', new Uint8Array(buffer));
+      });
+
+      document.getElementById('get_time').addEventListener('click', function() {
+        ble.read('RabbitClockTimeChar');
+      });
+
+      document.getElementById('set_hour').addEventListener('click', function() {
+        var buffer = new ArrayBuffer(8);
+        var view = new DataView(buffer);
+        view.setBigUint64(0, 1706716740n); // 2024-02-01 00:59:00(JST)
+        ble.write('RabbitClockTimeChar', new Uint8Array(buffer));
+      });
+
+      document.getElementById('set_12hour').addEventListener('click', function() {
+        var buffer = new ArrayBuffer(8);
+        var view = new DataView(buffer);
+        view.setBigUint64(0, 1706799540n); // 2024-02-01 23:59:00(JST)
+        ble.write('RabbitClockTimeChar', new Uint8Array(buffer));
+      });
+
+      document.getElementById('system_reset').addEventListener('click', function() {
+        var buffer = new ArrayBuffer(1);
+        var view = new DataView(buffer);
+        view.setUint8(0, 1);
+        ble.write('RabbitClockCommandChar', new Uint8Array(buffer));
+      });
+
+      document.getElementById('emergency_stop').addEventListener('click', function() {
+        var buffer = new ArrayBuffer(1);
+        var view = new DataView(buffer);
+        view.setUint8(0, 2);
+        ble.write('RabbitClockCommandChar', new Uint8Array(buffer));
+      });
+      
+    }
+
+    ble.onConnectGATT = function(uuid) {
+      console.log('> connected GATT');
+      document.getElementById('status').innerHTML = "connected GATT!";
+      document.getElementById('connect_panel').style.display = "none";
+      document.getElementById('control_panel').style.display = "block";
+    }
+
+    ble.onWrite = function(uuid) {
+      document.getElementById('status').innerHTML = "write ok";
+    }
+
+    ble.onRead = function (data, uuid) {
+      value = data.getBigUint64(0);
+      if (uuid == "RabbitClockTimeChar") {
+        document.getElementById('unixtime').innerHTML = value;
+        document.getElementById('status').innerHTML = "read ok"
+      }
+    }
+
+    ble.onDisconnect = function() {
+      document.getElementById('uuid_name').innerHTML = "Not Connected";
+      document.getElementById('status').innerHTML = "disconnected";
+    }
+    
+    ble.onError = function(error){
+      document.getElementById('status').innerHTML = "ERROR : " + error;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="title margin">
+      <h1 id="title">Rabbit Clock Controller</h1>
+    </div>
+    <div class="contents margin">
+      <div id="connect_panel">
+        <button id="connect" class="button">Connect</button>
+      </div>
+      <div id="control_panel" style="display: none;">
+        <button id="update_time" class="button">Update Time(Local)</button>
+        <button id="get_time" class="button">GetTime</button>
+        <button id="set_hour" class="button">Set 00:59</button>
+        <button id="set_12hour" class="button">Set 23:59</button>
+        <button id="system_reset" class="button">System Reset</button>
+        <button id="emergency_stop" class="button">Emergency Stop</button>
+        <hr>
+        <div id="uuid_name"> </div>
+        <div id="status"> </div>
+        <div id="unixtime"> </div>
+      </div>
+    </div>
+</div>
+</body>
+</html>
