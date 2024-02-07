@@ -25,9 +25,6 @@ class RabbitClock final : public RabbitClockInterface,
   std::time_t GetUnixTime() const override;
 
  private:
-  void CreateBLEService();
-
- private:
   ClockManagementSharedPtr clock_management_task_;
 };
 
