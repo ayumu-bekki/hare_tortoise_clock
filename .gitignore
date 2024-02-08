@@ -3,3 +3,6 @@ build/
 sdkconfig
 sdkconfig.old
 main/version.h
+
+
+*.FCStd1
