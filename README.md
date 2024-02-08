@@ -13,11 +13,11 @@ ESP32でステッピングモーターを制御して動かす壁掛け時計。
 
 ## 回路図
 
-![Schematic](docs/schematic.svg)
+![Schematic](docs/rabbit_clock_scheme.svg)
 
 ## ハードウェア設計図
 
-![図面(FreeCAD)](docs/rabbit_clock_drawing.FCStd)
+[図面(FreeCAD)](docs/rabbit_clock_drawing.FCStd)
 
 ## 開発メモ
 
