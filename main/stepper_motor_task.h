@@ -38,21 +38,27 @@ using MoveResultFuture = std::future<MoveResult>;
 class StepperMotorExecInfo {
  public:
   StepperMotorExecInfo()
-      : dir_(ROTATE_RIGHT), timer_tick_count_(0), step_num_(0), promise_() {}
+      : dir_(ROTATE_RIGHT), timer_tick_count_(0), step_num_(0) {}
   StepperMotorExecInfo(const RotateDir dir, const uint64_t timer_tick_count,
                        const int32_t step_num)
-      : dir_(dir),
-        timer_tick_count_(timer_tick_count),
-        step_num_(step_num),
-        promise_() {}
-
-  // コピーコンストラクタを削除（Promise利用のためQueueにはポインタで渡す)
-  StepperMotorExecInfo(const StepperMotorExecInfo&) = delete;
-  StepperMotorExecInfo& operator=(const StepperMotorExecInfo&) = delete;
+      : dir_(dir), timer_tick_count_(timer_tick_count), step_num_(step_num) {}
 
   const RotateDir dir_;
   const uint64_t timer_tick_count_;
   const int32_t step_num_;
+};
+
+class StepperMotorExecInfoAsync {
+ public:
+  StepperMotorExecInfoAsync() : exec_info_(), promise_() {}
+  StepperMotorExecInfoAsync(const StepperMotorExecInfo& exec_info, MoveResultPromise&& promise)
+      : exec_info_(exec_info), promise_(std::move(promise)) {}
+
+  // コピーコンストラクタを削除（Promise利用のためQueue[内部でコピーされる]にはポインタで渡す)
+  StepperMotorExecInfoAsync(const StepperMotorExecInfoAsync&) = delete;
+  StepperMotorExecInfoAsync& operator=(const StepperMotorExecInfoAsync&) = delete;
+
+  StepperMotorExecInfo exec_info_;
   MoveResultPromise promise_;
 };
 
@@ -81,10 +87,9 @@ class StepperMotorTask final : public Task {
   void Update() override;
 
   void EmergencyStop();
-  void AddExecInfo(StepperMotorExecInfo* const exec_info);
 
- private:
-  MoveResult ExecMove(const StepperMotorExecInfo* const exec_info);
+  MoveResultFuture ExecMoveAsync(const StepperMotorExecInfo& exec_info);
+  MoveResult ExecMove(const StepperMotorExecInfo& exec_info);
 
  public:
   static bool TimerCallback(gptimer_handle_t timer,
@@ -103,7 +108,7 @@ class StepperMotorTask final : public Task {
   const bool is_rotate_right_is_dir_up_;
   MessageQueue<EventType> motor_control_queue_;
   GPTimer gptimer_;
-  MessageQueue<StepperMotorExecInfo*> exec_queue_;
+  MessageQueue<StepperMotorExecInfoAsync*> exec_queue_;
 };
 
 using StepperMotorTaskSharedPtr = std::shared_ptr<StepperMotorTask>;

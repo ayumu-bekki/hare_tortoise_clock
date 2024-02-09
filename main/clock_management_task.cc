@@ -50,7 +50,7 @@ constexpr uint32_t HOUR_MOVE_SLOW_HZ = 200;
 ClockManagementTask::ClockManagementTask(
     const RabbitClockInterfaceWeakPtr rabbit_clock_interface)
     : Task(std::string(TASK_NAME).c_str(), PRIORITY, CORE_ID),
-      rabbit_clock_interface_(rabbit_clock_interface),
+      rabbit_clock_interface_(std::move(rabbit_clock_interface)),
       clock_status_(STATUS_NONE),
       stepper_motor_hour_(),
       stepper_motor_minute_(),
@@ -275,11 +275,13 @@ MoveResult ClockManagementTask::SetHourPosition(const uint32_t position_left_mm,
   ESP_LOGI(TAG, "Move Hour now_pos:%dmm new_hour_pos:%dmm move_len:%dmm",
            hour_pos_left_mm_, position_left_mm, move_length_mm);
 
-  StepperMotorExecInfo exec_info(StepperMotorExecInfo(
-      rotate_dir, StepperMotorUtil::FrequencyToTick(freq),
-      StepperMotorUtil::MMtoStep(std::abs(move_length_mm))));
-  MoveResultFuture exec_future = exec_info.promise_.get_future();
-  stepper_motor_hour_->AddExecInfo(&exec_info);
+  if (!stepper_motor_hour_) {
+    return RESULT_ERROR;
+  }
+  MoveResultFuture exec_future =
+      stepper_motor_hour_->ExecMoveAsync(StepperMotorExecInfo(
+          rotate_dir, StepperMotorUtil::FrequencyToTick(freq),
+          StepperMotorUtil::MMtoStep(std::abs(move_length_mm))));
 
   MoveResult move_result = exec_future.get();
   if (move_result == RESULT_STEP_FINISH) {
@@ -297,11 +299,13 @@ MoveResult ClockManagementTask::SetMinutePosition(
   ESP_LOGI(TAG, "Move Min now_pos:%dmm new_minute_pos:%dmm move_len:%dmm",
            minute_pos_left_mm_, position_left_mm, move_length_mm);
 
-  StepperMotorExecInfo exec_info(StepperMotorExecInfo(
-      rotate_dir, StepperMotorUtil::FrequencyToTick(freq),
-      StepperMotorUtil::MMtoStep(std::abs(move_length_mm))));
-  MoveResultFuture exec_future = exec_info.promise_.get_future();
-  stepper_motor_minute_->AddExecInfo(&exec_info);
+  if (!stepper_motor_minute_) {
+    return RESULT_ERROR;
+  }
+  MoveResultFuture exec_future =
+      stepper_motor_minute_->ExecMoveAsync(StepperMotorExecInfo(
+          rotate_dir, StepperMotorUtil::FrequencyToTick(freq),
+          StepperMotorUtil::MMtoStep(std::abs(move_length_mm))));
 
   MoveResult move_result = exec_future.get();
   if (move_result == RESULT_STEP_FINISH) {
@@ -313,17 +317,19 @@ MoveResult ClockManagementTask::SetMinutePosition(
 bool ClockManagementTask::ResetAllPosition() {
   ESP_LOGI(TAG, "Begin Reset Position");
 
-  StepperMotorExecInfo hour_reset(StepperMotorExecInfo(
-      RotateDir::ROTATE_LEFT, StepperMotorUtil::FrequencyToTick(RESET_MOVE_HZ),
-      StepperMotorUtil::MMtoStep(POSITION_RESET_MOVE_MM)));
-  MoveResultFuture hour_reset_future = hour_reset.promise_.get_future();
-  stepper_motor_hour_->AddExecInfo(&hour_reset);
+  if (!stepper_motor_hour_ || !stepper_motor_minute_) {
+    return false;
+  }
 
-  StepperMotorExecInfo minute_reset(StepperMotorExecInfo(
-      RotateDir::ROTATE_LEFT, StepperMotorUtil::FrequencyToTick(RESET_MOVE_HZ),
-      StepperMotorUtil::MMtoStep(POSITION_RESET_MOVE_MM)));
-  MoveResultFuture minute_reset_future = minute_reset.promise_.get_future();
-  stepper_motor_minute_->AddExecInfo(&minute_reset);
+  MoveResultFuture hour_reset_future = stepper_motor_hour_->ExecMoveAsync(
+      StepperMotorExecInfo(RotateDir::ROTATE_LEFT,
+                           StepperMotorUtil::FrequencyToTick(RESET_MOVE_HZ),
+                           StepperMotorUtil::MMtoStep(POSITION_RESET_MOVE_MM)));
+
+  MoveResultFuture minute_reset_future = stepper_motor_minute_->ExecMoveAsync(
+      StepperMotorExecInfo(RotateDir::ROTATE_LEFT,
+                           StepperMotorUtil::FrequencyToTick(RESET_MOVE_HZ),
+                           StepperMotorUtil::MMtoStep(POSITION_RESET_MOVE_MM)));
 
   const MoveResult hour_reset_result = hour_reset_future.get();
   const MoveResult minute_reset_result = minute_reset_future.get();
@@ -348,14 +354,16 @@ bool ClockManagementTask::SetBothPosition(const uint32_t hour_pos,
   ESP_LOGI(TAG, "Move Hour now_pos:%dmm new_hour_pos:%dmm move_len:%dmm",
            hour_pos_left_mm_, hour_pos, move_length_mm);
   hour_pos_left_mm_ = hour_pos;
-  StepperMotorExecInfo exec_info(StepperMotorExecInfo(
-      rotate_dir, StepperMotorUtil::FrequencyToTick(hour_hz),
-      StepperMotorUtil::MMtoStep(std::abs(move_length_mm))));
-  MoveResultFuture hour_future = exec_info.promise_.get_future();
-  stepper_motor_hour_->AddExecInfo(&exec_info);
 
-  MoveResult minute_result =
-      SetMinutePosition(minute_pos, minute_hz);
+  if (!stepper_motor_hour_) {
+    return false;
+  }
+  MoveResultFuture hour_future =
+      stepper_motor_hour_->ExecMoveAsync(StepperMotorExecInfo(
+          rotate_dir, StepperMotorUtil::FrequencyToTick(hour_hz),
+          StepperMotorUtil::MMtoStep(std::abs(move_length_mm))));
+
+  MoveResult minute_result = SetMinutePosition(minute_pos, minute_hz);
   MoveResult hour_result = hour_future.get();
 
   return hour_result == RESULT_STEP_FINISH &&

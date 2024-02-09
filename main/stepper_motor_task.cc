@@ -19,7 +19,7 @@ namespace RabbitClockSystem {
 /// モータードライバーをON/OFFするインターバル時間(ms)
 constexpr int32_t ENABLE_INTERVAL = 50;
 /// イベントキューサイズ
-constexpr int32_t EXEC_QUEUE_SIZE = 5;
+constexpr int32_t EXEC_QUEUE_SIZE = 2;
 /// イベントキュー最大待機tick
 constexpr int32_t EXEC_QUEUE_RECEIVE_LIMIT = 1000 / portTICK_PERIOD_MS;
 /// イベントキューサイズ
@@ -78,23 +78,17 @@ void StepperMotorTask::Initialize() {
 }
 
 void StepperMotorTask::Update() {
-  StepperMotorExecInfo *exec_info = nullptr;
+  StepperMotorExecInfoAsync *exec_info_promise = nullptr;
   while (true) {
-    if (exec_queue_.ReceiveWait(&exec_info, EXEC_QUEUE_RECEIVE_LIMIT)) {
-      if (exec_info) {
-        exec_info->promise_.set_value(ExecMove(exec_info));
+    if (exec_queue_.ReceiveWait(&exec_info_promise, EXEC_QUEUE_RECEIVE_LIMIT)) {
+      if (exec_info_promise) {
+        exec_info_promise->promise_.set_value(
+            ExecMove(exec_info_promise->exec_info_));
+        delete exec_info_promise;
+        exec_info_promise = nullptr;
       }
     }
   }
-}
-
-void StepperMotorTask::AddExecInfo(StepperMotorExecInfo *const exec_info) {
-  if (!exec_info) {
-    return;
-  }
-  ESP_LOGI(TAG, "Add Queue dir:%d step:%d", exec_info->dir_,
-           exec_info->step_num_);
-  exec_queue_.Send(exec_info);
 }
 
 void StepperMotorTask::EmergencyStop() {
@@ -102,37 +96,43 @@ void StepperMotorTask::EmergencyStop() {
   motor_control_queue_.Send(EventType::EMERGENCY_STOP);
 }
 
-MoveResult StepperMotorTask::ExecMove(
-    const StepperMotorExecInfo *const exec_info) {
-  if (!exec_info) {
-    return RESULT_ERROR;
-  }
+MoveResultFuture StepperMotorTask::ExecMoveAsync(
+    const StepperMotorExecInfo &exec_info) {
+  MoveResultPromise promise;
+  MoveResultFuture future = promise.get_future();
 
-  ESP_LOGI(TAG, "Start Exec Motor. dir:%d step:%d", exec_info->dir_,
-           exec_info->step_num_);
+  // Queueにコピーで渡す都合上、SharedPtrやUniquePtrが利用できないため生ポインタ(利用後に破棄する)
+  exec_queue_.Send(new StepperMotorExecInfoAsync(exec_info, std::move(promise)));
+
+  return future;
+}
+
+MoveResult StepperMotorTask::ExecMove(const StepperMotorExecInfo &exec_info) {
+  ESP_LOGI(TAG, "Start Exec Motor. dir:%d step:%d", exec_info.dir_,
+           exec_info.step_num_);
   // リミット事前チェック
   bool is_right_on = GPIO::GetLevel(gpio_right_limit_);
   bool is_left_on = GPIO::GetLevel(gpio_left_limit_);
-  if (is_right_on && exec_info->dir_ == ROTATE_RIGHT) {
+  if (is_right_on && exec_info.dir_ == ROTATE_RIGHT) {
     ESP_LOGW(TAG, "Motor Limit Left");
     return RESULT_RIGHT_LIMIT;
-  } else if (is_left_on && exec_info->dir_ == ROTATE_LEFT) {
+  } else if (is_left_on && exec_info.dir_ == ROTATE_LEFT) {
     ESP_LOGW(TAG, "Motor Limit Right");
     return RESULT_LEFT_LIMIT;
   }
 
   // モーター動作
-  int32_t record = exec_info->step_num_ * 2;
+  int32_t record = exec_info.step_num_ * 2;
   EventType event_type = EventType::NONE;
   MoveResult result = RESULT_STEP_FINISH;
 
   GPIO::SetLevel(gpio_enable_, 0);  // LOWで有効
   GPIO::SetLevel(gpio_step_, 0);
   GPIO::SetLevel(gpio_dir_,  // HIGHで時計回り
-                 !(is_rotate_right_is_dir_up_ ^ exec_info->dir_));
+                 !(is_rotate_right_is_dir_up_ ^ exec_info.dir_));
   Util::SleepMillisecond(ENABLE_INTERVAL);
 
-  gptimer_.Start(exec_info->timer_tick_count_);
+  gptimer_.Start(exec_info.timer_tick_count_);
 
   while (record) {
     if (motor_control_queue_.ReceiveWait(&event_type,
@@ -143,14 +143,14 @@ MoveResult StepperMotorTask::ExecMove(
       } else if (event_type == EventType::INPUT_RIGHT_LIMIT) {
         is_right_on = GPIO::GetLevel(gpio_right_limit_);
         // ESP_LOGD(TAG, "Right %s", is_right_on ? "ON":"OFF");
-        if (is_right_on && exec_info->dir_ == ROTATE_RIGHT) {
+        if (is_right_on && exec_info.dir_ == ROTATE_RIGHT) {
           result = RESULT_RIGHT_LIMIT;
           break;
         }
       } else if (event_type == EventType::INPUT_LEFT_LIMIT) {
         is_left_on = GPIO::GetLevel(gpio_left_limit_);
         // ESP_LOGD(TAG, "Left %s", is_left_on ? "ON":"OFF");
-        if (is_left_on && exec_info->dir_ == ROTATE_LEFT) {
+        if (is_left_on && exec_info.dir_ == ROTATE_LEFT) {
           result = RESULT_LEFT_LIMIT;
           break;
         }
@@ -171,7 +171,7 @@ MoveResult StepperMotorTask::ExecMove(
   Util::SleepMillisecond(ENABLE_INTERVAL);
   GPIO::SetLevel(gpio_enable_, 1);
 
-  ESP_LOGI(TAG, "Finish Motor Exec");
+  ESP_LOGI(TAG, "Finish Exec Motor");
   return result;
 }
 
