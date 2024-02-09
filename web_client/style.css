@@ -72,17 +72,10 @@ hr {
 }
 
 #title {
-  color: #ff8319;
+  color: #87603f;
   font-size: 21px;
   font-weight: 700;
   line-height: 2em;
-}
-
-#unixtime {
-  color: #448aff;
-  font-size: 72px;
-  font-weight: 300;
-  line-height: 1.5em;
 }
 
 a { text-decoration: none; }
