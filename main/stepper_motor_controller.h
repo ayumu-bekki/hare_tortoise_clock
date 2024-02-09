@@ -1,5 +1,5 @@
-#ifndef STEPPER_MOTOR_TASK_H_
-#define STEPPER_MOTOR_TASK_H_
+#ifndef STEPPER_MOTOR_CONTROLLER_H_
+#define STEPPER_MOTOR_CONTROLLER_H_
 // ESP32 Rabbit Clock
 // (C)2024 bekki.jp
 
@@ -15,7 +15,6 @@
 
 #include "gptimer.h"
 #include "message_queue.h"
-#include "task.h"
 
 namespace RabbitClockSystem {
 
@@ -48,26 +47,8 @@ class StepperMotorExecInfo {
   const int32_t step_num_;
 };
 
-class StepperMotorExecInfoAsync {
+class StepperMotorController {
  public:
-  StepperMotorExecInfoAsync() : exec_info_(), promise_() {}
-  StepperMotorExecInfoAsync(const StepperMotorExecInfo& exec_info, MoveResultPromise&& promise)
-      : exec_info_(exec_info), promise_(std::move(promise)) {}
-
-  // コピーコンストラクタを削除（Promise利用のためQueue[内部でコピーされる]にはポインタで渡す)
-  StepperMotorExecInfoAsync(const StepperMotorExecInfoAsync&) = delete;
-  StepperMotorExecInfoAsync& operator=(const StepperMotorExecInfoAsync&) = delete;
-
-  StepperMotorExecInfo exec_info_;
-  MoveResultPromise promise_;
-};
-
-class StepperMotorTask final : public Task {
- public:
-  static constexpr std::string_view TASK_NAME = "StepperMotorTask";
-  static constexpr int32_t PRIORITY = Task::PRIORITY_HIGH;
-  static constexpr int32_t CORE_ID = APP_CPU_NUM;
-
   enum EventType {
     NONE = 0,
     TIMER = 1,
@@ -77,17 +58,14 @@ class StepperMotorTask final : public Task {
   };
 
  public:
-  StepperMotorTask(const uint32_t gptimer_resolution,
-                   const gpio_num_t gpio_enable, const gpio_num_t gpio_step,
-                   const gpio_num_t gpio_dir, const gpio_num_t gpio_right_limit,
-                   const gpio_num_t gpio_left_limit,
-                   const bool is_rotate_right_is_dir_up);
-
-  void Initialize() override;
-  void Update() override;
+  StepperMotorController(const uint32_t gptimer_resolution,
+                         const gpio_num_t gpio_enable,
+                         const gpio_num_t gpio_step, const gpio_num_t gpio_dir,
+                         const gpio_num_t gpio_right_limit,
+                         const gpio_num_t gpio_left_limit,
+                         const bool is_rotate_right_is_dir_up);
 
   void EmergencyStop();
-
   MoveResultFuture ExecMoveAsync(const StepperMotorExecInfo& exec_info);
   MoveResult ExecMove(const StepperMotorExecInfo& exec_info);
 
@@ -108,12 +86,11 @@ class StepperMotorTask final : public Task {
   const bool is_rotate_right_is_dir_up_;
   MessageQueue<EventType> motor_control_queue_;
   GPTimer gptimer_;
-  MessageQueue<StepperMotorExecInfoAsync*> exec_queue_;
 };
 
-using StepperMotorTaskSharedPtr = std::shared_ptr<StepperMotorTask>;
-using StepperMotorTaskWeakPtr = std::weak_ptr<StepperMotorTask>;
+using StepperMotorControllerSharedPtr = std::shared_ptr<StepperMotorController>;
+using StepperMotorControllerWeakPtr = std::weak_ptr<StepperMotorController>;
 
 }  // namespace RabbitClockSystem
 
-#endif  // STEPPER_MOTOR_TASK_H_
+#endif  // STEPPER_MOTOR_CONTROLLER_H_

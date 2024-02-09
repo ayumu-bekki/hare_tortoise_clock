@@ -2,10 +2,11 @@
 // (C)2024 bekki.jp
 
 // Include ----------------------
-#include "stepper_motor_task.h"
+#include "stepper_motor_controller.h"
 
 #include <driver/gpio.h>
 #include <driver/gptimer.h>
+#include <esp_pthread.h>
 
 #include <future>
 
@@ -19,23 +20,20 @@ namespace RabbitClockSystem {
 /// モータードライバーをON/OFFするインターバル時間(ms)
 constexpr int32_t ENABLE_INTERVAL = 50;
 /// イベントキューサイズ
-constexpr int32_t EXEC_QUEUE_SIZE = 2;
-/// イベントキュー最大待機tick
-constexpr int32_t EXEC_QUEUE_RECEIVE_LIMIT = 1000 / portTICK_PERIOD_MS;
-/// イベントキューサイズ
 constexpr int32_t MOTOR_CONTROL_QUEUE_SIZE = 10;
 /// イベントキュー最大待機tick
 constexpr int32_t MOTOR_CONTROL_QUEUE_RECEIVE_LIMIT = 1000 / portTICK_PERIOD_MS;
+/// 非同期実行時のスレッド名
+constexpr std::string_view TASK_NAME = "StepperMotorTask";
+/// 非同期実行時のスレッド利用CPUコア
+constexpr int32_t CORE_ID = APP_CPU_NUM;
 
-StepperMotorTask::StepperMotorTask(const uint32_t gptimer_resolution,
-                                   const gpio_num_t gpio_enable,
-                                   const gpio_num_t gpio_step,
-                                   const gpio_num_t gpio_dir,
-                                   const gpio_num_t gpio_right_limit,
-                                   const gpio_num_t gpio_left_limit,
-                                   const bool is_rotate_right_is_dir_up)
-    : Task(std::string(TASK_NAME).c_str(), PRIORITY, CORE_ID),
-      gptimer_resolution_(gptimer_resolution),
+StepperMotorController::StepperMotorController(
+    const uint32_t gptimer_resolution, const gpio_num_t gpio_enable,
+    const gpio_num_t gpio_step, const gpio_num_t gpio_dir,
+    const gpio_num_t gpio_right_limit, const gpio_num_t gpio_left_limit,
+    const bool is_rotate_right_is_dir_up)
+    : gptimer_resolution_(gptimer_resolution),
       gpio_enable_(gpio_enable),
       gpio_step_(gpio_step),
       gpio_dir_(gpio_dir),
@@ -43,12 +41,7 @@ StepperMotorTask::StepperMotorTask(const uint32_t gptimer_resolution,
       gpio_left_limit_(gpio_left_limit),
       is_rotate_right_is_dir_up_(is_rotate_right_is_dir_up),
       motor_control_queue_(),
-      gptimer_(),
-      exec_queue_() {}
-
-void StepperMotorTask::Initialize() {
-  ESP_LOGI(TAG, "Start Stepper Motor Task");
-
+      gptimer_() {
   // Init Gpio
   GPIO::InitOutput(gpio_enable_, 1);  // HIGHで無効 LOWで有効
   GPIO::InitOutput(gpio_step_, 0);
@@ -57,57 +50,41 @@ void StepperMotorTask::Initialize() {
   GPIO::InitInput(gpio_left_limit_);
 
   // Create MessageQueue
-  if (!exec_queue_.Create(EXEC_QUEUE_SIZE)) {
-    ESP_LOGE(TAG, "Creating queue failed");
-  }
   if (!motor_control_queue_.Create(MOTOR_CONTROL_QUEUE_SIZE)) {
     ESP_LOGE(TAG, "Creating queue failed");
   }
 
   // Set Gpio Input Callback
   gpio_isr_handler_add(gpio_right_limit_,
-                       &StepperMotorTask::GpioRightLimitCallback,
+                       &StepperMotorController::GpioRightLimitCallback,
                        &motor_control_queue_);
   gpio_isr_handler_add(gpio_left_limit_,
-                       &StepperMotorTask::GpioLeftLimitCallback,
+                       &StepperMotorController::GpioLeftLimitCallback,
                        &motor_control_queue_);
 
   // Create Timer
-  gptimer_.Create(gptimer_resolution_, &StepperMotorTask::TimerCallback,
+  gptimer_.Create(gptimer_resolution_, &StepperMotorController::TimerCallback,
                   &motor_control_queue_);
 }
 
-void StepperMotorTask::Update() {
-  StepperMotorExecInfoAsync *exec_info_promise = nullptr;
-  while (true) {
-    if (exec_queue_.ReceiveWait(&exec_info_promise, EXEC_QUEUE_RECEIVE_LIMIT)) {
-      if (exec_info_promise) {
-        exec_info_promise->promise_.set_value(
-            ExecMove(exec_info_promise->exec_info_));
-        delete exec_info_promise;
-        exec_info_promise = nullptr;
-      }
-    }
-  }
-}
-
-void StepperMotorTask::EmergencyStop() {
+void StepperMotorController::EmergencyStop() {
   ESP_LOGI(TAG, "Stepper Motor. Add Queue EmergencyStop");
   motor_control_queue_.Send(EventType::EMERGENCY_STOP);
 }
 
-MoveResultFuture StepperMotorTask::ExecMoveAsync(
+MoveResultFuture StepperMotorController::ExecMoveAsync(
     const StepperMotorExecInfo &exec_info) {
-  MoveResultPromise promise;
-  MoveResultFuture future = promise.get_future();
+  // 新規スレッドを作る際の設定
+  esp_pthread_cfg_t cfg = esp_pthread_get_default_config();
+  cfg.thread_name = std::string(TASK_NAME).c_str();
+  cfg.pin_to_core = CORE_ID;
+  esp_pthread_set_cfg(&cfg);
 
-  // Queueにコピーで渡す都合上、SharedPtrやUniquePtrが利用できないため生ポインタ(利用後に破棄する)
-  exec_queue_.Send(new StepperMotorExecInfoAsync(exec_info, std::move(promise)));
-
-  return future;
+  return std::async(std::launch::async, [this, exec_info] { return ExecMove(exec_info); });
 }
 
-MoveResult StepperMotorTask::ExecMove(const StepperMotorExecInfo &exec_info) {
+MoveResult StepperMotorController::ExecMove(
+    const StepperMotorExecInfo &exec_info) {
   ESP_LOGI(TAG, "Start Exec Motor. dir:%d step:%d", exec_info.dir_,
            exec_info.step_num_);
   // リミット事前チェック
@@ -175,7 +152,7 @@ MoveResult StepperMotorTask::ExecMove(const StepperMotorExecInfo &exec_info) {
   return result;
 }
 
-bool IRAM_ATTR StepperMotorTask::TimerCallback(
+bool IRAM_ATTR StepperMotorController::TimerCallback(
     gptimer_handle_t timer, const gptimer_alarm_event_data_t *event_data,
     void *message_queue) {
   MessageQueue<EventType> *const queue =
@@ -183,13 +160,15 @@ bool IRAM_ATTR StepperMotorTask::TimerCallback(
   return queue->SendFromISR(EventType::TIMER);
 }
 
-void IRAM_ATTR StepperMotorTask::GpioLeftLimitCallback(void *message_queue) {
+void IRAM_ATTR
+StepperMotorController::GpioLeftLimitCallback(void *message_queue) {
   MessageQueue<EventType> *const queue =
       static_cast<MessageQueue<EventType> *>(message_queue);
   queue->SendFromISR(EventType::INPUT_LEFT_LIMIT);
 }
 
-void IRAM_ATTR StepperMotorTask::GpioRightLimitCallback(void *message_queue) {
+void IRAM_ATTR
+StepperMotorController::GpioRightLimitCallback(void *message_queue) {
   MessageQueue<EventType> *const queue =
       static_cast<MessageQueue<EventType> *>(message_queue);
   queue->SendFromISR(EventType::INPUT_RIGHT_LIMIT);

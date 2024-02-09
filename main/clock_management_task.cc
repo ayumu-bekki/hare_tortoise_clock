@@ -62,8 +62,8 @@ ClockManagementTask::ClockManagementTask(
 void ClockManagementTask::Initialize() {
   ESP_LOGI(TAG, "Start Clock Management Task");
 
-  // Create StepperMotorTask
-  stepper_motor_hour_ = std::make_shared<StepperMotorTask>(
+  // Create StepperMotorController
+  stepper_motor_hour_ = std::make_shared<StepperMotorController>(
       STEPPER_MOTOR_RESOLUTION,
       static_cast<gpio_num_t>(CONFIG_HOUR_HAND_ENABLE_OUTPUT_GPIO_NO),
       static_cast<gpio_num_t>(CONFIG_HOUR_HAND_STEP_OUTPUT_GPIO_NO),
@@ -71,9 +71,8 @@ void ClockManagementTask::Initialize() {
       static_cast<gpio_num_t>(CONFIG_HOUR_HAND_RIGHT_LIMIT_INPUT_GPIO_NO),
       static_cast<gpio_num_t>(CONFIG_HOUR_HAND_LEFT_LIMIT_INPUT_GPIO_NO),
       CONFIG_IS_STEPPER_MOTOR_ROTATE_RIGHT_IS_DIR_UP);
-  stepper_motor_hour_->Start();
 
-  stepper_motor_minute_ = std::make_shared<StepperMotorTask>(
+  stepper_motor_minute_ = std::make_shared<StepperMotorController>(
       STEPPER_MOTOR_RESOLUTION,
       static_cast<gpio_num_t>(CONFIG_MINUTE_HAND_ENABLE_OUTPUT_GPIO_NO),
       static_cast<gpio_num_t>(CONFIG_MINUTE_HAND_STEP_OUTPUT_GPIO_NO),
@@ -81,7 +80,6 @@ void ClockManagementTask::Initialize() {
       static_cast<gpio_num_t>(CONFIG_MINUTE_HAND_RIGHT_LIMIT_INPUT_GPIO_NO),
       static_cast<gpio_num_t>(CONFIG_MINUTE_HAND_LEFT_LIMIT_INPUT_GPIO_NO),
       CONFIG_IS_STEPPER_MOTOR_ROTATE_RIGHT_IS_DIR_UP);
-  stepper_motor_minute_->Start();
 
   clock_status_ = STATUS_INITIALIZE;
   hour_pos_left_mm_ = 0;

@@ -9,7 +9,7 @@
 
 #include "clock_status.h"
 #include "rabbit_clock_interface.h"
-#include "stepper_motor_task.h"
+#include "stepper_motor_controller.h"
 #include "task.h"
 
 namespace RabbitClockSystem {
@@ -50,8 +50,8 @@ class ClockManagementTask final : public Task {
  private:
   const RabbitClockInterfaceWeakPtr rabbit_clock_interface_;
   ClockStatus clock_status_;
-  StepperMotorTaskSharedPtr stepper_motor_hour_;
-  StepperMotorTaskSharedPtr stepper_motor_minute_;
+  StepperMotorControllerSharedPtr stepper_motor_hour_;
+  StepperMotorControllerSharedPtr stepper_motor_minute_;
   int32_t hour_;
   int32_t minute_;
   int32_t hour_pos_left_mm_;
