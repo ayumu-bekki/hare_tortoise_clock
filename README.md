@@ -10,7 +10,7 @@ ESP32でステッピングモーターを制御して直線上に時・分を示
 ## Bluetooth Low Energyクライアント
 
 ![Schematic](docs/web_client_qrcode.png)
-
+[https://ayumu-bekki.github.io/rabbit_clock/web_client/](https://ayumu-bekki.github.io/rabbit_clock/web_client/)
 上記から時計の設定が可能。(Chrome系ブラウザ iOS非対応)
 
 ## 回路図
