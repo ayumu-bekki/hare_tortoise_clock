@@ -18,7 +18,7 @@
     ble.onConnectGATT = function(uuid) {
       console.log('> connected GATT');
       document.getElementById('status').innerHTML = "接続完了";
-      document.getElementById('connect_panel').style.display = "none";
+      document.getElementById('connect').disabled = null;
       document.getElementById('control_panel').style.display = "block";
     };
 
@@ -27,9 +27,9 @@
     };
 
     ble.onRead = function(data, uuid) {
-      value = data.getBigUint64(0);
+      var value = parseInt(data.getBigUint64(0) * 1000n);
       if (uuid == "RabbitClockTimeChar") {
-        document.getElementById('unixtime').innerHTML = new Date(value * 1000).toLocaleString();
+        document.getElementById('unixtime').innerHTML = "時計システム時刻:" + new Date(value).toLocaleString();
         document.getElementById('status').innerHTML = "読み込み完了"
       }
     };
@@ -44,10 +44,15 @@
     
     ble.onError = function(error){
       document.getElementById('status').innerHTML = "エラー (" + error + ")";
+      document.getElementById('connect_panel').style.display = "block";
+      document.getElementById('control_panel').style.display = "none";
     };
 
     window.onload = function() {
       document.getElementById('connect').addEventListener('click', function() {
+        document.getElementById('status').innerHTML = "接続中";
+        document.getElementById('connect').disabled = "disable";
+        document.getElementById('connect_panel').style.display = "none";
         return (ble.scan('RabbitClockTimeChar'))
         .then( () => {
           return ble.connectGATT('RabbitClockTimeChar');
@@ -102,8 +107,8 @@
     </div>
     <div class="contents margin">
       <div id="connect_panel">
-        <button id="connect" class="button">接続</button>
-        <p>RabbitClockに接続してください</p>
+        <p>Bluetooth Low Energy デバイス名 : RabbitClock</p>
+        <p><button id="connect" class="button">接続</button></p>
       </div>
       <div id="control_panel" style="display: none;">
         <button id="update_time" class="button">時間設定(接続元時間を反映)</button>
