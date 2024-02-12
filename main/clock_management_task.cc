@@ -152,7 +152,7 @@ void ClockManagementTask::Update() {
   } else if (clock_status_ == STATUS_ERROR) {
     // Monitoring LED ON
     GPIO::SetLevel(static_cast<gpio_num_t>(CONFIG_MONITORING_OUTPUT_GPIO_NO),
-                   1);
+                   true);
   }
 
   Util::SleepMillisecond(CLOCK_MANAGEMENT_TASK_UPDATE_SLEEP_MS);
@@ -385,7 +385,7 @@ void ClockManagementTask::SetUnixTime(const std::time_t epoc) {
 
     // Monitoring LED OFF
     GPIO::SetLevel(static_cast<gpio_num_t>(CONFIG_MONITORING_OUTPUT_GPIO_NO),
-                   0);
+                   false);
 
     ESP_LOGI(TAG, "Finish Set Time ----------");
   }

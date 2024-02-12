@@ -47,6 +47,7 @@ class StepperMotorExecInfo {
   const int32_t step_num_;
 };
 
+/// ステッピングモーターコントロールクラス
 class StepperMotorController {
  public:
   enum EventType {
@@ -64,10 +65,19 @@ class StepperMotorController {
                          const gpio_num_t gpio_right_limit,
                          const gpio_num_t gpio_left_limit,
                          const bool is_rotate_right_is_dir_up);
+  ~StepperMotorController();
 
+  /// コピー禁止
+  StepperMotorController(const StepperMotorController&) = delete;
+  StepperMotorController& operator=(const StepperMotorController&) = delete;
+
+  /// 緊急停止
   void EmergencyStop();
-  MoveResultFuture ExecMoveAsync(const StepperMotorExecInfo& exec_info);
+
+  /// モーター動作
   MoveResult ExecMove(const StepperMotorExecInfo& exec_info);
+  /// モーター動作(非同期版)
+  MoveResultFuture ExecMoveAsync(const StepperMotorExecInfo& exec_info);
 
  public:
   static bool TimerCallback(gptimer_handle_t timer,

@@ -16,8 +16,13 @@ namespace RabbitClockSystem::GPIO {
 /// Init GPIO ISR Service
 void InitGpioIsrService() { gpio_install_isr_service(0); }
 
+/// Reset GPIO 
+void Reset(const gpio_num_t gpio_number) {
+  gpio_reset_pin(gpio_number);
+}
+
 /// Init GPIO (Output)
-void InitOutput(const gpio_num_t gpio_number, const int32_t level) {
+void InitOutput(const gpio_num_t gpio_number, const bool level) {
   gpio_config_t io_conf_dir = {
       .pin_bit_mask = 1ull << gpio_number,
       .mode = GPIO_MODE_OUTPUT,
@@ -45,7 +50,7 @@ void InitInput(const gpio_num_t gpio_number) {
 }
 
 /// Set GPIO Level (Output)
-void SetLevel(const gpio_num_t gpio_number, const int32_t level) {
+void SetLevel(const gpio_num_t gpio_number, const bool level) {
   gpio_set_level(gpio_number, level);
 }
 
