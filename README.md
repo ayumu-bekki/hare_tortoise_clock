@@ -3,21 +3,34 @@
 ESP32でステッピングモーターを制御して直線上に時・分を示す壁掛け時計。
 兎と亀がモチーフ。
 
-## ソフトウェア説明
+## 設定方法
+
+下記URLから時計の設定が可能。(対応環境:Bluetooth Low Energyに対応したマシン/iOS非対応 Chrome系ブラウザ)
+
+[https://ayumu-bekki.github.io/rabbit_clock/web_client/](https://ayumu-bekki.github.io/rabbit_clock/web_client/)
+
+![Schematic](docs/web_client_qrcode.png)
+
+## ソフトウェア
 
 * ESP-IDF v5.2 (https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/)
 
-## Bluetooth Low Energyクライアント
+## ハードウェア
 
-![Schematic](docs/web_client_qrcode.png)
-[https://ayumu-bekki.github.io/rabbit_clock/web_client/](https://ayumu-bekki.github.io/rabbit_clock/web_client/)
-上記から時計の設定が可能。(Chrome系ブラウザ iOS非対応)
+### 回路図
 
-## 回路図
+- メインマイコン
+    - [ESP32-DevKitC V4ボード](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/hw-reference/esp32/get-started-devkitc.html#get-started-esp32-devkitc-board-front) 
+- ステッピングモータードライバー
+    - AT2100 https://ja.aliexpress.com/item/1005002225468581.html
+- マイクロスイッチ
+    - OMRON スイッチ SS-5GL2
+- ステッピングモーター
+    - 17hs08 1004s https://ja.aliexpress.com/item/4001014382025.html
 
 ![Schematic](docs/rabbit_clock_scheme.svg)
 
-## ハードウェア設計
+### 機械設計図
 
 ![Drawing](docs/rabbit_clock_drawing_preview.png)
 
@@ -28,15 +41,10 @@ ESP32でステッピングモーターを制御して直線上に時・分を示
 - スライドガイド
     - ミスミ スライドガイド SSEBZ-MX13-720
 - アイドラー固定用軸 
-    - ミスミ カタモチピンダンツキ SFXBA5A-11-F9
-- マイクロスイッチ
-    - OMRON スイッチ SS-5GL2
-- ステッピングモータードライバー
-    - AT2100 https://ja.aliexpress.com/item/1005002225468581.html
-- ステッピングモーター
-    - 17hs08 1004s https://ja.aliexpress.com/item/4001014382025.html
+    - ミスミ カタモチピンダンツキ SFXBA5A-9-F9
 - プーリー・タイミングベルト
     - GT2 プーリー20mm ボア5mm 3Dプリンターキット https://ja.aliexpress.com/item/1005003025244723.html
+    - ※上記商品だけではタイミングベルトの長さが足りないので別途入手が必要
 
 ## 開発メモ
 
@@ -58,8 +66,7 @@ https://howtomechatronics.com/tutorials/arduino/how-to-control-stepper-motor-wit
 ### Bluetooth Low Energy対応
 物理ボタンを設置したくなかったので、Bluetooth Low Energyから設定・デモ動作を行えるようにしました。
 
-Bluetooth Low Energyをはじめよう (Make:PROJECTS) を購入したが、Webにある記事で十分だった。
-https://www.amazon.co.jp/dp/4873117135
+[Bluetooth Low Energyをはじめよう (Make:PROJECTS) ](https://www.amazon.co.jp/dp/4873117135)を購入したが、Webにある記事で十分だった。
 Bluetooth Low Energyについては以下記事で学びました。
 https://www.musen-connect.co.jp/blog/course/trial-production/ble-beginner-1/
 
@@ -72,10 +79,13 @@ https://github.com/electricbaka/bluejelly
 #### ESP32シリアルポート指定でのflash/monitor
 
 BOOTボタンを押しながらENボタンを押す
+
 idf.py flash -p /dev/cu.usbserial-110 -b 115200
+
 idf.py monitor -p /dev/cu.usbserial-110 -b 115200
 
 #### ステッピングモーター17hs08 1004s配線
+
 - 2B (B- Black)
 - 2A (B+ Grren)
 - 1A (A+ Blue)
