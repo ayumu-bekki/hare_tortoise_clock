@@ -5,6 +5,8 @@
 
 // Include ----------------------
 #include <string>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
 
 namespace RabbitClockSystem {
 
@@ -20,9 +22,10 @@ class Task {
   static constexpr int32_t TASK_STAC_DEPTH = 8192;
 
   /// Task Priority
+  static constexpr int32_t PRIORITY_TOP = (configMAX_PRIORITIES) - 1;
   static constexpr int32_t PRIORITY_LOW = 0;
-  static constexpr int32_t PRIORITY_NORMAL = 1;
-  static constexpr int32_t PRIORITY_HIGH = 2;
+  static constexpr int32_t PRIORITY_NORMAL = PRIORITY_TOP - 4;
+  static constexpr int32_t PRIORITY_HIGH = PRIORITY_TOP - 3;
 
  private:
   Task();

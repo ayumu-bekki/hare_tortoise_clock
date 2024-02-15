@@ -34,6 +34,7 @@ enum MoveResult {
 using MoveResultPromise = std::promise<MoveResult>;
 using MoveResultFuture = std::future<MoveResult>;
 
+/// ステッピングモーター実行情報
 class StepperMotorExecInfo {
  public:
   StepperMotorExecInfo()

@@ -7,8 +7,6 @@
 #include <chrono>
 #include <memory>
 
-#include "clock_status.h"
-
 namespace RabbitClockSystem {
 
 class RabbitClockInterface {

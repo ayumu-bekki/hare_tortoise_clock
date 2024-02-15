@@ -4,10 +4,9 @@
 // (C)2024 bekki.jp
 
 // Include ----------------------
-
 #include <chrono>
+#include <functional>
 
-#include "clock_status.h"
 #include "rabbit_clock_interface.h"
 #include "stepper_motor_controller.h"
 #include "task.h"
@@ -19,6 +18,20 @@ class ClockManagementTask final : public Task {
   static constexpr std::string_view TASK_NAME = "ClockManagementTask";
   static constexpr int32_t PRIORITY = Task::PRIORITY_LOW;
   static constexpr int32_t CORE_ID = PRO_CPU_NUM;
+
+ private:
+  enum ClockStatus {
+    STATUS_NONE = 0,
+    STATUS_ERROR,
+    STATUS_INITIALIZE,
+    STATUS_SETTING_WAIT,
+    STATUS_ENABLE,
+    STATUS_SETTING,
+    MAX_CLOCK_STATUS,
+  };
+
+  static const std::function<void(ClockManagementTask&)>
+      UPDATE_TASKS[MAX_CLOCK_STATUS];
 
  public:
   explicit ClockManagementTask(
@@ -43,6 +56,12 @@ class ClockManagementTask final : public Task {
 
   int32_t CalcHourPos(const int32_t hour) const;
   int32_t CalcMinutePos(const int32_t min) const;
+
+  void TaskDummy();
+  void TaskInitialize();
+  void TaskSetting();
+  void TaskEnable();
+  void TaskError();
 
   void NextHour();
   void Next12Hour();

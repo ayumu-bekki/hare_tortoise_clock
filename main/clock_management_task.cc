@@ -47,6 +47,16 @@ constexpr uint32_t HOUR_MOVE_HZ =
 /// Hour動作速度
 constexpr uint32_t HOUR_MOVE_SLOW_HZ = 200;
 
+const std::function<void(ClockManagementTask&)>
+    ClockManagementTask::UPDATE_TASKS[MAX_CLOCK_STATUS] = {
+        &ClockManagementTask::TaskDummy,       // STATUS_NONE
+        &ClockManagementTask::TaskError,       // STATUS_ERROR,
+        &ClockManagementTask::TaskInitialize,  // STATUS_INITIALIZE,
+        &ClockManagementTask::TaskDummy,       // STATUS_SETTING_WAIT,
+        &ClockManagementTask::TaskEnable,      // STATUS_ENABLE,
+        &ClockManagementTask::TaskSetting,     // STATUS_SETTING,
+};
+
 ClockManagementTask::ClockManagementTask(
     const RabbitClockInterfaceWeakPtr rabbit_clock_interface)
     : Task(std::string(TASK_NAME).c_str(), PRIORITY, CORE_ID),
@@ -87,75 +97,86 @@ void ClockManagementTask::Initialize() {
 }
 
 void ClockManagementTask::Update() {
-  if (clock_status_ == STATUS_INITIALIZE) {
-    ESP_LOGI(TAG, "Start Initialize");
+  if (0 < clock_status_ && clock_status_ < MAX_CLOCK_STATUS) {
+    UPDATE_TASKS[clock_status_](*this);
+  }
+  Util::SleepMillisecond(CLOCK_MANAGEMENT_TASK_UPDATE_SLEEP_MS);
+}
 
-    // モーター位置をリセット
-    if (!ResetAllPosition()) {
-      ESP_LOGE(TAG, "Failed Reset Position.");
-      clock_status_ = STATUS_ERROR;
-      return;
-    }
+void ClockManagementTask::TaskDummy() {}
 
-    // 初期待機位置に移動
-    ESP_LOGI(TAG, "Set Position Home");
-    if (!SetBothPosition(POSITION_LEFT_LIMIT_MM, NORMAL_MOVE_HZ,
-                         POSITION_LEFT_LIMIT_MM, NORMAL_MOVE_HZ)) {
-      ESP_LOGE(TAG, "Failed Motor Error.");
-      clock_status_ = STATUS_ERROR;
-      return;
-    }
+void ClockManagementTask::TaskInitialize() {
+  ESP_LOGI(TAG, "Start Initialize ----------");
 
-    clock_status_ = STATUS_SETTING_WAIT;
-
-    ESP_LOGI(TAG, "Finish Initialize.");
-  } else if (clock_status_ == STATUS_SETTING) {
-    // HourとMinuteを同時に動かす
-    if (!SetBothPosition(CalcHourPos(hour_), NORMAL_MOVE_HZ,
-                         CalcMinutePos(minute_), NORMAL_MOVE_HZ)) {
-      ESP_LOGE(TAG, "Failed Motor Error.");
-      clock_status_ = STATUS_ERROR;
-      return;
-    }
-    clock_status_ = STATUS_ENABLE;
-
-  } else if (clock_status_ == STATUS_ENABLE) {
-    const std::tm time_info = Util::GetLocalTime();
-    const std::string time_str = Util::TimeToStr(time_info);
-
-    ESP_LOGI(TAG, "Status Enable. Now > %s", time_str.c_str());
-
-    if ((time_info.tm_hour % HALF_DAY_HOUR) != hour_) {
-      hour_ = time_info.tm_hour % HALF_DAY_HOUR;
-      minute_ = 0;
-
-      if (hour_ == 0) {
-        // NEXT_12_HOUR
-        clock_status_ = STATUS_NEXT_12HOUR;
-      } else {
-        // 59->60 HOUR
-        clock_status_ = STATUS_NEXT_HOUR;
-      }
-    } else if (time_info.tm_min != minute_) {
-      minute_ = time_info.tm_min;
-      if (SetMinutePosition(CalcMinutePos(minute_), MINUTE_MOVE_HZ) !=
-          RESULT_STEP_FINISH) {
-        ESP_LOGE(TAG, "Failed Motor Error.");
-        clock_status_ = STATUS_ERROR;
-        return;
-      }
-    }
-  } else if (clock_status_ == STATUS_NEXT_HOUR) {
-    NextHour();
-  } else if (clock_status_ == STATUS_NEXT_12HOUR) {
-    Next12Hour();
-  } else if (clock_status_ == STATUS_ERROR) {
-    // Monitoring LED ON
-    GPIO::SetLevel(static_cast<gpio_num_t>(CONFIG_MONITORING_OUTPUT_GPIO_NO),
-                   true);
+  // モーター位置をリセット
+  if (!ResetAllPosition()) {
+    ESP_LOGE(TAG, "Failed Reset Position.");
+    clock_status_ = STATUS_ERROR;
+    return;
   }
 
-  Util::SleepMillisecond(CLOCK_MANAGEMENT_TASK_UPDATE_SLEEP_MS);
+  // 初期待機位置に移動
+  ESP_LOGI(TAG, "Set Position Home");
+  if (!SetBothPosition(POSITION_LEFT_LIMIT_MM, NORMAL_MOVE_HZ,
+                       POSITION_LEFT_LIMIT_MM, NORMAL_MOVE_HZ)) {
+    ESP_LOGE(TAG, "Failed Motor Error.");
+    clock_status_ = STATUS_ERROR;
+    return;
+  }
+
+  clock_status_ = STATUS_SETTING_WAIT;
+
+  ESP_LOGI(TAG, "Finish Initialize ----------");
+}
+
+void ClockManagementTask::TaskSetting() {
+  ESP_LOGI(TAG, "Start Setting ----------");
+
+  const std::tm time_info = Util::GetLocalTime();
+  hour_ = time_info.tm_hour % HALF_DAY_HOUR;
+  minute_ = time_info.tm_min;
+
+  // Monitoring LED OFF
+  GPIO::SetLevel(static_cast<gpio_num_t>(CONFIG_MONITORING_OUTPUT_GPIO_NO),
+                 false);
+
+  // HourとMinuteを同時に動かす
+  if (!SetBothPosition(CalcHourPos(hour_), NORMAL_MOVE_HZ,
+                       CalcMinutePos(minute_), NORMAL_MOVE_HZ)) {
+    ESP_LOGE(TAG, "Failed Motor Error.");
+    clock_status_ = STATUS_ERROR;
+    return;
+  }
+  clock_status_ = STATUS_ENABLE;
+
+  ESP_LOGI(TAG, "Finish Setting ----------");
+}
+
+void ClockManagementTask::TaskEnable() {
+  const std::tm time_info = Util::GetLocalTime();
+  const std::string time_str = Util::TimeToStr(time_info);
+
+  ESP_LOGI(TAG, "Status Enable. Now > %s", time_str.c_str());
+
+  if ((time_info.tm_hour % HALF_DAY_HOUR) != hour_) {
+    hour_ = time_info.tm_hour % HALF_DAY_HOUR;
+    minute_ = 0;
+
+    if (hour_ == 0) {
+      // NEXT_12_HOUR
+      Next12Hour();
+    } else {
+      // 59->60 HOUR
+      NextHour();
+    }
+  } else if (time_info.tm_min != minute_) {
+    minute_ = time_info.tm_min;
+    if (SetMinutePosition(CalcMinutePos(minute_), MINUTE_MOVE_HZ) !=
+        RESULT_STEP_FINISH) {
+      ESP_LOGE(TAG, "Failed Motor Error.");
+      clock_status_ = STATUS_ERROR;
+    }
+  }
 }
 
 void ClockManagementTask::NextHour() {
@@ -187,9 +208,6 @@ void ClockManagementTask::NextHour() {
     clock_status_ = STATUS_ERROR;
     return;
   }
-
-  // 通常ステータスに戻して終了
-  clock_status_ = STATUS_ENABLE;
 
   ESP_LOGI(TAG, "Finish Next Hour ----------");
 }
@@ -248,10 +266,13 @@ void ClockManagementTask::Next12Hour() {
     return;
   }
 
-  // 通常ステータスに戻して終了
-  clock_status_ = STATUS_ENABLE;
-
   ESP_LOGI(TAG, "Finish Next 12Hour ----------");
+}
+
+void ClockManagementTask::TaskError() {
+  // Monitoring LED ON
+  GPIO::SetLevel(static_cast<gpio_num_t>(CONFIG_MONITORING_OUTPUT_GPIO_NO),
+                 true);
 }
 
 void ClockManagementTask::EmergencyStop() {
@@ -369,25 +390,13 @@ bool ClockManagementTask::SetBothPosition(const uint32_t hour_pos,
 }
 
 void ClockManagementTask::SetUnixTime(const std::time_t epoc) {
+  // BLEスレッドから利用されるため、処理は最低限で
   if (clock_status_ == STATUS_SETTING_WAIT || clock_status_ == STATUS_ENABLE) {
-    ESP_LOGI(TAG, "Begin Set Time ----------");
-
     // 設定中状態
     clock_status_ = STATUS_SETTING;
-
     Util::SetSystemTime(epoc);
-    const std::tm time_info = Util::GetLocalTime();
-    const std::string time_str = Util::TimeToStr(time_info);
+    const std::string time_str = Util::TimeToStr(Util::GetLocalTime());
     ESP_LOGI(TAG, "Set Time > %s", time_str.c_str());
-
-    hour_ = time_info.tm_hour % HALF_DAY_HOUR;
-    minute_ = time_info.tm_min;
-
-    // Monitoring LED OFF
-    GPIO::SetLevel(static_cast<gpio_num_t>(CONFIG_MONITORING_OUTPUT_GPIO_NO),
-                   false);
-
-    ESP_LOGI(TAG, "Finish Set Time ----------");
   }
 }
 
