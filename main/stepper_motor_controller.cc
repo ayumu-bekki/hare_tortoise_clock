@@ -17,7 +17,8 @@
 
 namespace RabbitClockSystem {
 
-/// モータードライバーをON/OFFするインターバル時間(ms) ステッピングモータードライバによって調整
+/// モータードライバーをON/OFFするインターバル時間(ms)
+/// ステッピングモータードライバによって調整
 constexpr int32_t ENABLE_INTERVAL = 20;
 /// イベントキューサイズ
 constexpr int32_t MOTOR_CONTROL_QUEUE_SIZE = 10;
@@ -42,6 +43,12 @@ StepperMotorController::StepperMotorController(
       is_rotate_right_is_dir_up_(is_rotate_right_is_dir_up),
       motor_control_queue_(),
       gptimer_() {
+  ESP_LOGI(TAG,
+           "Initialize Stepper Motor ports > en:%d step:%d dir:%d "
+           "right_limit:%d left_limit:%d",
+           gpio_enable_, gpio_step_, gpio_dir_,
+           gpio_right_limit_, gpio_left_limit_);
+
   // Init Gpio
   GPIO::InitOutput(gpio_enable_, 1);  // HIGHで無効 LOWで有効
   GPIO::InitOutput(gpio_step_, 0);
@@ -67,15 +74,14 @@ StepperMotorController::StepperMotorController(
                   &motor_control_queue_);
 }
 
-StepperMotorController::~StepperMotorController()
-{
+StepperMotorController::~StepperMotorController() {
   gptimer_.Destroy();
 
   motor_control_queue_.Destroy();
 
   gpio_isr_handler_remove(gpio_right_limit_);
   gpio_isr_handler_remove(gpio_left_limit_);
-  
+
   GPIO::Reset(gpio_enable_);
   GPIO::Reset(gpio_step_);
   GPIO::Reset(gpio_dir_);
@@ -96,7 +102,8 @@ MoveResultFuture StepperMotorController::ExecMoveAsync(
   cfg.pin_to_core = CORE_ID;
   esp_pthread_set_cfg(&cfg);
 
-  return std::async(std::launch::async, [this, exec_info] { return ExecMove(exec_info); });
+  return std::async(std::launch::async,
+                    [this, exec_info] { return ExecMove(exec_info); });
 }
 
 MoveResult StepperMotorController::ExecMove(
@@ -115,7 +122,9 @@ MoveResult StepperMotorController::ExecMove(
   }
 
   // モーター動作
-  int32_t record = exec_info.step_num_ * 2; // LOW/HIGHで1周期にするためループ回数を2倍にする(2回で1周期)
+  int32_t record =
+      exec_info.step_num_ *
+      2;  // LOW/HIGHで1周期にするためループ回数を2倍にする(2回で1周期)
   EventType event_type = EventType::NONE;
   MoveResult result = RESULT_STEP_FINISH;
 
@@ -135,14 +144,14 @@ MoveResult StepperMotorController::ExecMove(
         GPIO::SetLevel(gpio_step_, record % 2);
       } else if (event_type == EventType::INPUT_RIGHT_LIMIT) {
         is_right_on = GPIO::GetLevel(gpio_right_limit_);
-        ESP_LOGD(TAG, "Right %s", is_right_on ? "ON":"OFF");
+        ESP_LOGD(TAG, "Right %s", is_right_on ? "ON" : "OFF");
         if (is_right_on && exec_info.dir_ == ROTATE_RIGHT) {
           result = RESULT_RIGHT_LIMIT;
           break;
         }
       } else if (event_type == EventType::INPUT_LEFT_LIMIT) {
         is_left_on = GPIO::GetLevel(gpio_left_limit_);
-        ESP_LOGD(TAG, "Left %s", is_left_on ? "ON":"OFF");
+        ESP_LOGD(TAG, "Left %s", is_left_on ? "ON" : "OFF");
         if (is_left_on && exec_info.dir_ == ROTATE_LEFT) {
           result = RESULT_LEFT_LIMIT;
           break;

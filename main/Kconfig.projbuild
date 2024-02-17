@@ -20,13 +20,13 @@ menu "Rabbit Clock System Configuration"
 
     config HOUR_HAND_STEP_OUTPUT_GPIO_NO
         int "Hour Hand step (A) Output GPIO No"
-        default 26
+        default 27
         help
             GPIO number 
 
     config HOUR_HAND_DIR_OUTPUT_GPIO_NO
         int "Hour Hand dir (A) Output GPIO No"
-        default 27
+        default 26
         help
             GPIO number
 
@@ -50,13 +50,13 @@ menu "Rabbit Clock System Configuration"
 
     config MINUTE_HAND_STEP_OUTPUT_GPIO_NO
         int "Minute Hand step (B) Output GPIO No"
-        default 12
+        default 13
         help
             GPIO number 
 
     config MINUTE_HAND_DIR_OUTPUT_GPIO_NO
         int "Minute Hand dir (B) Output GPIO No"
-        default 13
+        default 12
         help
             GPIO number
 
