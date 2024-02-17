@@ -8,7 +8,7 @@ menu "Rabbit Clock System Configuration"
 
     config MONITORING_OUTPUT_GPIO_NO
         int "Monitoring Output GPIO No"
-        default 19
+        default 17
         help
             GPIO number for monitoring signals
 
@@ -32,43 +32,43 @@ menu "Rabbit Clock System Configuration"
 
     config HOUR_HAND_RIGHT_LIMIT_INPUT_GPIO_NO
         int "Hour Hand right limit (A) input GPIO No"
-        default 14
+        default 19
         help
             GPIO number
 
     config HOUR_HAND_LEFT_LIMIT_INPUT_GPIO_NO
         int "Hour Hand left limit (A) input GPIO No"
-        default 12
+        default 18
         help
             GPIO number
 
     config MINUTE_HAND_ENABLE_OUTPUT_GPIO_NO
         int "Minute Hand enable (B) Output GPIO No"
-        default 18
+        default 14
         help
             GPIO number
 
     config MINUTE_HAND_STEP_OUTPUT_GPIO_NO
         int "Minute Hand step (B) Output GPIO No"
-        default 5 
+        default 12
         help
             GPIO number 
 
     config MINUTE_HAND_DIR_OUTPUT_GPIO_NO
         int "Minute Hand dir (B) Output GPIO No"
-        default 17
+        default 13
         help
             GPIO number
 
     config MINUTE_HAND_RIGHT_LIMIT_INPUT_GPIO_NO
         int "Minute Hand right limit (B) input GPIO No"
-        default 16
+        default 2
         help
             GPIO number
 
     config MINUTE_HAND_LEFT_LIMIT_INPUT_GPIO_NO
         int "Minute Hand left limit (B) input GPIO No"
-        default 4
+        default 15
         help
             GPIO number
 
