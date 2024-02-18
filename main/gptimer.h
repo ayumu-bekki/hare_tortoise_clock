@@ -1,6 +1,6 @@
 #ifndef GPTIMER_H_
 #define GPTIMER_H_
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------

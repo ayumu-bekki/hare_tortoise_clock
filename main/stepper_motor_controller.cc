@@ -1,4 +1,4 @@
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -15,7 +15,7 @@
 #include "message_queue.h"
 #include "util.h"
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
 /// モータードライバーをON/OFFするインターバル時間(ms)
 /// ステッピングモータードライバによって調整
@@ -199,4 +199,4 @@ StepperMotorController::GpioRightLimitCallback(void *message_queue) {
   queue->SendFromISR(EventType::INPUT_RIGHT_LIMIT);
 }
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem

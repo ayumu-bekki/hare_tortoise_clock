@@ -1,10 +1,10 @@
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
 #include "logger.h"
 
-namespace RabbitClockSystem::Logger {
+namespace HareTortoiseClockSystem::Logger {
 
 void InitializeLogLevel() {
 #if CONFIG_DEBUG != 0
@@ -17,4 +17,4 @@ void InitializeLogLevel() {
 #endif
 }
 
-}  // namespace RabbitClockSystem::Logger
+}  // namespace HareTortoiseClockSystem::Logger

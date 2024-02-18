@@ -1,6 +1,6 @@
 #ifndef BLE_SERVICES_H_
 #define BLE_SERVICES_H_
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -14,15 +14,15 @@
 #include <vector>
 
 #include "ble_device.h"
-#include "rabbit_clock_interface.h"
+#include "hare_tortoise_clock_interface.h"
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
 class BleTimeCharacteristic final : public BleCharacteristicInterface {
  public:
   BleTimeCharacteristic(
       esp_bt_uuid_t characteristic_uuid, esp_gatt_char_prop_t property,
-      const RabbitClockInterfaceWeakPtr rabbit_clock_interface);
+      const HareTortoiseClockInterfaceWeakPtr hare_tortoise_clock_interface);
 
   void Write(const std::vector<uint8_t> *const data) override;
   void Read(std::vector<uint8_t> *const data) override;
@@ -36,14 +36,14 @@ class BleTimeCharacteristic final : public BleCharacteristicInterface {
   const esp_bt_uuid_t characteristic_uuid_;
   const esp_gatt_char_prop_t property_;
   uint16_t handle_;
-  const RabbitClockInterfaceWeakPtr rabbit_clock_interface_;
+  const HareTortoiseClockInterfaceWeakPtr hare_tortoise_clock_interface_;
 };
 
 class BleCommandCharacteristic final : public BleCharacteristicInterface {
  public:
   BleCommandCharacteristic(
       esp_bt_uuid_t characteristic_uuid, esp_gatt_char_prop_t property,
-      const RabbitClockInterfaceWeakPtr rabbit_clock_interface);
+      const HareTortoiseClockInterfaceWeakPtr hare_tortoise_clock_interface);
 
   void Write(const std::vector<uint8_t> *const data) override;
   void Read(std::vector<uint8_t> *const data) override {}
@@ -57,7 +57,7 @@ class BleCommandCharacteristic final : public BleCharacteristicInterface {
   const esp_bt_uuid_t characteristic_uuid_;
   const esp_gatt_char_prop_t property_;
   uint16_t handle_;
-  const RabbitClockInterfaceWeakPtr rabbit_clock_interface_;
+  const HareTortoiseClockInterfaceWeakPtr hare_tortoise_clock_interface_;
 };
 
 class BleClockService final : public BleServiceInterface {
@@ -83,6 +83,6 @@ class BleClockService final : public BleServiceInterface {
   std::vector<BleCharacteristicInterfaceSharedPtr> characteristics_;
 };
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem
 
 #endif  // BLE_SERVICE_DUMMY_H_

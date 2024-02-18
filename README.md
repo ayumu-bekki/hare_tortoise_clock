@@ -1,13 +1,12 @@
-# 兎時計
+# ノウサギとリクガメの時計
 
 ESP32でステッピングモーターを制御して直線上に時・分を示す壁掛け時計。
-兎と亀がモチーフ。
 
 ## 設定方法
 
 下記URLから時計の設定が可能。(対応環境:Bluetooth Low Energyに対応したマシン/iOS非対応 Chrome系ブラウザ)
 
-[https://ayumu-bekki.github.io/rabbit_clock/web_client/](https://ayumu-bekki.github.io/rabbit_clock/web_client/)
+[https://ayumu-bekki.github.io/hare_tortoise_clock/web_client/](https://ayumu-bekki.github.io/hare_tortoise_clock/web_client/)
 
 ![Schematic](docs/web_client_qrcode.png)
 
@@ -28,13 +27,13 @@ ESP32でステッピングモーターを制御して直線上に時・分を示
 - ステッピングモーター
     - 17hs08 1004s https://ja.aliexpress.com/item/4001014382025.html
 
-![Schematic](docs/rabbit_clock_scheme.svg)
+![Schematic](docs/hare_tortoise_clock_scheme.svg)
 
 ### 機械設計図
 
-![Drawing](docs/rabbit_clock_drawing_preview.png)
+![Drawing](docs/hare_tortoise_clock_drawing_preview.png)
 
-[図面(FreeCAD)](docs/rabbit_clock_drawing.FCStd)
+[図面(FreeCAD)](docs/hare_tortoise_clock_drawing.FCStd)
 
 モーターブラケット・アイドラーブラケット・スライダーベースは、アルミニウム(A5052)削り出し
 
@@ -45,6 +44,10 @@ ESP32でステッピングモーターを制御して直線上に時・分を示
 - プーリー・タイミングベルト
     - GT2 プーリー20mm ボア5mm 3Dプリンターキット https://ja.aliexpress.com/item/1005003025244723.html
     - ※上記商品だけではタイミングベルトの長さが足りないので別途入手が必要
+
+### ステッカー
+
+[本体貼付用(psd)](docs/hare_tortoise_clock_sticker.psd)
 
 ## 開発メモ
 

@@ -1,4 +1,4 @@
-menu "Rabbit Clock System Configuration"
+menu "Hare Tortoise Clock System Configuration"
 
     config LOCAL_TIME_ZONE
         string "Local Time Zone"

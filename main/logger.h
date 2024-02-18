@@ -1,6 +1,6 @@
 #ifndef LOGGER_H_
 #define LOGGER_H_
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -10,16 +10,16 @@
 #undef LOG_LOCAL_LEVEL
 #define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
 /// Application Log Tag
-static constexpr char TAG[] = "RabbitClock";
+static constexpr char TAG[] = "HareTortoiseClock";
 
 namespace Logger {
 
 void InitializeLogLevel();
 
 }  // namespace Logger
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem
 
 #endif  // LOGGER_H_

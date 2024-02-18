@@ -1,6 +1,6 @@
 #ifndef STEPPER_MOTOR_CONTROLLER_H_
 #define STEPPER_MOTOR_CONTROLLER_H_
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -16,7 +16,7 @@
 #include "gptimer.h"
 #include "message_queue.h"
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
 enum RotateDir {
   ROTATE_LEFT = 0,   // anti clockwise
@@ -102,6 +102,6 @@ class StepperMotorController {
 using StepperMotorControllerSharedPtr = std::shared_ptr<StepperMotorController>;
 using StepperMotorControllerWeakPtr = std::weak_ptr<StepperMotorController>;
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem
 
 #endif  // STEPPER_MOTOR_CONTROLLER_H_

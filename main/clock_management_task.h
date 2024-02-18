@@ -1,17 +1,17 @@
 #ifndef CLOCK_MANAGEMENT_TASK_H_
 #define CLOCK_MANAGEMENT_TASK_H_
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
 #include <chrono>
 #include <functional>
 
-#include "rabbit_clock_interface.h"
+#include "hare_tortoise_clock_interface.h"
 #include "stepper_motor_controller.h"
 #include "task.h"
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
 class ClockManagementTask final : public Task {
  public:
@@ -35,7 +35,7 @@ class ClockManagementTask final : public Task {
 
  public:
   explicit ClockManagementTask(
-      const RabbitClockInterfaceWeakPtr rabbit_clock_interface);
+      const HareTortoiseClockInterfaceWeakPtr hare_tortoise_clock_interface);
 
   void Initialize() override;
   void Update() override;
@@ -67,7 +67,7 @@ class ClockManagementTask final : public Task {
   void Next12Hour();
 
  private:
-  const RabbitClockInterfaceWeakPtr rabbit_clock_interface_;
+  const HareTortoiseClockInterfaceWeakPtr hare_tortoise_clock_interface_;
   ClockStatus clock_status_;
   StepperMotorControllerSharedPtr stepper_motor_hour_;
   StepperMotorControllerSharedPtr stepper_motor_minute_;
@@ -80,6 +80,6 @@ class ClockManagementTask final : public Task {
 using ClockManagementSharedPtr = std::shared_ptr<ClockManagementTask>;
 using ClockManagementWeakPtr = std::weak_ptr<ClockManagementTask>;
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem
 
 #endif  // CLOCK_MANAGEMENT_TASK_H_

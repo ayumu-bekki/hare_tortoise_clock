@@ -1,6 +1,6 @@
 #ifndef TASK_H_
 #define TASK_H_
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -8,7 +8,7 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
 /// FreeRTOS xTask Wrap
 class Task {
@@ -67,6 +67,6 @@ class Task {
   int32_t m_CoreId;
 };
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem
 
 #endif  // TASK_H_

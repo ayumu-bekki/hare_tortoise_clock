@@ -1,4 +1,4 @@
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -6,9 +6,9 @@
 
 #include "logger.h"
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
-constexpr char DEVICE_NAME[] = "RabbitClock";
+constexpr char DEVICE_NAME[] = "HareTortoiseClock";
 constexpr uint16_t LOCAL_MTU = 500;
 
 static void gap_event(esp_gap_ble_cb_event_t event,
@@ -191,4 +191,4 @@ void BleDevice::StartAdvertising() {
   esp_ble_gap_start_advertising(&adv_params);
 }
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem

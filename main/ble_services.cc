@@ -1,4 +1,4 @@
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -11,19 +11,19 @@
 #include "stepper_motor_util.h"
 #include "util.h"
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
 BleTimeCharacteristic::BleTimeCharacteristic(
     esp_bt_uuid_t characteristic_uuid, esp_gatt_char_prop_t property,
-    const RabbitClockInterfaceWeakPtr rabbit_clock_interface)
+    const HareTortoiseClockInterfaceWeakPtr hare_tortoise_clock_interface)
     : BleCharacteristicInterface(),
       characteristic_uuid_(characteristic_uuid),
       property_(property),
-      rabbit_clock_interface_(rabbit_clock_interface) {}
+      hare_tortoise_clock_interface_(hare_tortoise_clock_interface) {}
 
 void BleTimeCharacteristic::Write(const std::vector<uint8_t> *const data) {
-  RabbitClockInterfaceSharedPtr rabbit_clock = rabbit_clock_interface_.lock();
-  if (!rabbit_clock) {
+  HareTortoiseClockInterfaceSharedPtr hare_tortoise_clock = hare_tortoise_clock_interface_.lock();
+  if (!hare_tortoise_clock) {
     return;
   }
 
@@ -36,20 +36,20 @@ void BleTimeCharacteristic::Write(const std::vector<uint8_t> *const data) {
     std::reverse(reverse.begin(), reverse.end());
     const uint64_t unixtime = *reinterpret_cast<uint64_t *>(reverse.data());
     ESP_LOGI(TAG, "RECV TIME %" PRId64, unixtime);
-    rabbit_clock->SetUnixTime(unixtime);
+    hare_tortoise_clock->SetUnixTime(unixtime);
   }
 }
 
 void BleTimeCharacteristic::Read(std::vector<uint8_t> *const data) {
-  RabbitClockInterfaceSharedPtr rabbit_clock = rabbit_clock_interface_.lock();
-  if (!rabbit_clock) {
+  HareTortoiseClockInterfaceSharedPtr hare_tortoise_clock = hare_tortoise_clock_interface_.lock();
+  if (!hare_tortoise_clock) {
     return;
   }
 
   // [time_t型(uint64_t)] ビッグエンディアン
   std::vector<uint8_t> payload(8);
   uint64_t *const view = reinterpret_cast<uint64_t *>(payload.data());
-  *view = rabbit_clock->GetUnixTime();
+  *view = hare_tortoise_clock->GetUnixTime();
   std::reverse(
       payload.begin(),
       payload
@@ -73,11 +73,11 @@ esp_gatt_char_prop_t BleTimeCharacteristic::GetProperty() const {
 
 BleCommandCharacteristic::BleCommandCharacteristic(
     esp_bt_uuid_t characteristic_uuid, esp_gatt_char_prop_t property,
-    const RabbitClockInterfaceWeakPtr rabbit_clock_interface)
+    const HareTortoiseClockInterfaceWeakPtr hare_tortoise_clock_interface)
     : BleCharacteristicInterface(),
       characteristic_uuid_(characteristic_uuid),
       property_(property),
-      rabbit_clock_interface_(rabbit_clock_interface) {}
+      hare_tortoise_clock_interface_(hare_tortoise_clock_interface) {}
 
 void BleCommandCharacteristic::Write(const std::vector<uint8_t> *const data) {
   esp_log_buffer_hex(TAG, data->data(), data->size());
@@ -94,11 +94,11 @@ void BleCommandCharacteristic::Write(const std::vector<uint8_t> *const data) {
   }
   if (cmd == 2) {
     ESP_LOGI(TAG, "Command 2 > Emergency Stop");
-    RabbitClockInterfaceSharedPtr rabbit_clock = rabbit_clock_interface_.lock();
-    if (!rabbit_clock) {
+    HareTortoiseClockInterfaceSharedPtr hare_tortoise_clock = hare_tortoise_clock_interface_.lock();
+    if (!hare_tortoise_clock) {
       return;
     }
-    rabbit_clock->EmergencyStop();
+    hare_tortoise_clock->EmergencyStop();
   }
 }
 
@@ -280,4 +280,4 @@ uint16_t BleClockService::GetAppId() const { return app_id_; }
 
 uint16_t BleClockService::GetGattsIf() const { return gatts_if_; }
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem

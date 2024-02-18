@@ -1,0 +1,1878 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="609" height="841"> <style xmlns="http://www.w3.org/1999/xhtml">
+        
+ .M athJax_Hover_Frame {
+ border-radius: .25em;
+
+        -webkit-border-radius: .25em;
+ -moz-border-radius: .25em;
+
+        -khtml-border-radius: .25em;
+ box-shadow: 0px 0px 15px #83A;
+
+        -webkit-box-shadow: 0px 0px 15px #83A;
+ -moz-box-shadow: 0px 0px
+        15px #83A;
+ -khtml-box-shadow: 0px 0px 15px #83A;
+ border: 1px
+        solid #A6D ! important;
+ display: inline-block;
+ position:
+        absolute
+ }
+
+ .MathJax_Menu_Button .MathJax_Hover_Arrow {
+
+        position: absolute;
+ cursor: pointer;
+ display: inline-block;
+
+        border: 2px solid #AAA;
+ border-radius: 4px;
+
+        -webkit-border-radius: 4px;
+ -moz-border-radius: 4px;
+
+        -khtml-border-radius: 4px;
+ font-family: 'Courier New',
+        Courier;
+ font-size: 9px;
+ color: #F0F0F0
+ }
+
+
+        .MathJax_Menu_Button .MathJax_Hover_Arrow span {
+ display: block;
+
+        background-color: #AAA;
+ border: 1px solid;
+ border-radius:
+        3px;
+ line-height: 0;
+ padding: 4px
+ }
+
+
+        .MathJax_Hover_Arrow:hover {
+ color: white !important;
+ border:
+        2px solid #CCC !important
+ }
+
+ .MathJax_Hover_Arrow:hover
+        span {
+ background-color: #CCC !important
+ }
+
+
+
+        #MathJax_About {
+ position: fixed;
+ left: 50%;
+ width:
+        auto;
+ text-align: center;
+ border: 3px outset;
+ padding:
+        1em 2em;
+ background-color: #DDDDDD;
+ color: black;
+
+        cursor: default;
+ font-family: message-box;
+ font-size: 120%;
+
+        font-style: normal;
+ text-indent: 0;
+ text-transform: none;
+
+        line-height: normal;
+ letter-spacing: normal;
+ word-spacing:
+        normal;
+ word-wrap: normal;
+ white-space: nowrap;
+ float:
+        none;
+ z-index: 201;
+ border-radius: 15px;
+
+        -webkit-border-radius: 15px;
+ -moz-border-radius: 15px;
+
+        -khtml-border-radius: 15px;
+ box-shadow: 0px 10px 20px #808080;
+
+        -webkit-box-shadow: 0px 10px 20px #808080;
+ -moz-box-shadow: 0px
+        10px 20px #808080;
+ -khtml-box-shadow: 0px 10px 20px #808080;
+
+        filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2,
+        Color='gray', Positive='true')
+ }
+
+
+        #MathJax_About.MathJax_MousePost {
+ outline: none
+ }
+
+
+        .MathJax_Menu {
+ position: absolute;
+ background-color: white;
+
+        color: black;
+ width: auto;
+ padding: 2px;
+ border: 1px
+        solid #CCCCCC;
+ margin: 0;
+ cursor: default;
+ font: menu;
+
+        text-align: left;
+ text-indent: 0;
+ text-transform: none;
+
+        line-height: normal;
+ letter-spacing: normal;
+ word-spacing:
+        normal;
+ word-wrap: normal;
+ white-space: nowrap;
+ float:
+        none;
+ z-index: 201;
+ box-shadow: 0px 10px 20px #808080;
+
+        -webkit-box-shadow: 0px 10px 20px #808080;
+ -moz-box-shadow: 0px
+        10px 20px #808080;
+ -khtml-box-shadow: 0px 10px 20px #808080;
+
+        filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2,
+        Color='gray', Positive='true')
+ }
+
+
+        .MathJax_MenuItem {
+ padding: 2px 2em;
+ background: transparent
+
+        }
+
+ .MathJax_MenuArrow {
+ position: absolute;
+ right:
+        .5em;
+ padding-top: .25em;
+ color: #666666;
+ font-size:
+        .75em
+ }
+
+ .MathJax_MenuActive .MathJax_MenuArrow {
+
+        color: white
+ }
+
+ .MathJax_MenuArrow.RTL {
+ left: .5em;
+
+        right: auto
+ }
+
+ .MathJax_MenuCheck {
+ position:
+        absolute;
+ left: .7em
+ }
+
+ .MathJax_MenuCheck.RTL {
+
+        right: .7em;
+ left: auto
+ }
+
+ .MathJax_MenuRadioCheck {
+
+        position: absolute;
+ left: 1em
+ }
+
+
+        .MathJax_MenuRadioCheck.RTL {
+ right: 1em;
+ left: auto
+ }
+
+
+        .MathJax_MenuLabel {
+ padding: 2px 2em 4px 1.33em;
+ font-style:
+        italic
+ }
+
+ .MathJax_MenuRule {
+ border-top: 1px solid
+        #CCCCCC;
+ margin: 4px 1px 0px
+ }
+
+
+        .MathJax_MenuDisabled {
+ color: GrayText
+ }
+
+
+        .MathJax_MenuActive {
+ background-color: Highlight;
+ color:
+        HighlightText
+ }
+
+ .MathJax_MenuDisabled:focus,
+        .MathJax_MenuLabel:focus {
+ background-color: #E8E8E8
+ }
+
+
+        .MathJax_ContextMenu:focus {
+ outline: none
+ }
+
+
+        .MathJax_ContextMenu .MathJax_MenuItem:focus {
+ outline: none
+
+        }
+
+ #MathJax_AboutClose {
+ top: .2em;
+ right: .2em
+
+        }
+
+ .MathJax_Menu .MathJax_MenuClose {
+ top: -10px;
+
+        left: -10px
+ }
+
+ .MathJax_MenuClose {
+ position:
+        absolute;
+ cursor: pointer;
+ display: inline-block;
+
+        border: 2px solid #AAA;
+ border-radius: 18px;
+
+        -webkit-border-radius: 18px;
+ -moz-border-radius: 18px;
+
+        -khtml-border-radius: 18px;
+ font-family: 'Courier New',
+        Courier;
+ font-size: 24px;
+ color: #F0F0F0
+ }
+
+
+        .MathJax_MenuClose span {
+ display: block;
+ background-color:
+        #AAA;
+ border: 1.5px solid;
+ border-radius: 18px;
+
+        -webkit-border-radius: 18px;
+ -moz-border-radius: 18px;
+
+        -khtml-border-radius: 18px;
+ line-height: 0;
+ padding: 8px 0
+        6px
+ }
+
+ .MathJax_MenuClose:hover {
+ color: white
+        !important;
+ border: 2px solid #CCC !important
+ }
+
+
+        .MathJax_MenuClose:hover span {
+ background-color: #CCC !important
+
+        }
+
+ .MathJax_MenuClose:hover:focus {
+ outline: none
+ }
+
+
+        .MathJax_Preview .MJXf-math {
+ color: inherit !important
+ }
+
+
+        .MJX_Assistive_MathML {
+ position: absolute !important;
+ top:
+        0;
+ left: 0;
+ clip: rect(1px, 1px, 1px, 1px);
+ padding: 1px
+        0 0 0 !important;
+ border: 0 !important;
+ height: 1px
+        !important;
+ width: 1px !important;
+ overflow: hidden
+        !important;
+ display: block !important;
+ -webkit-touch-callout:
+        none;
+ -webkit-user-select: none;
+ -khtml-user-select: none;
+
+        -moz-user-select: none;
+ -ms-user-select: none;
+ user-select:
+        none
+ }
+
+ .MJX_Assistive_MathML.MJX_Assistive_MathML_Block
+        {
+ width: 100% !important
+ }
+
+ #MathJax_Zoom {
+
+        position: absolute;
+ background-color: #F0F0F0;
+ overflow:
+        auto;
+ display: block;
+ z-index: 301;
+ padding: .5em;
+
+        border: 1px solid black;
+ margin: 0;
+ font-weight: normal;
+
+        font-style: normal;
+ text-align: left;
+ text-indent: 0;
+
+        text-transform: none;
+ line-height: normal;
+ letter-spacing:
+        normal;
+ word-spacing: normal;
+ word-wrap: normal;
+
+        white-space: nowrap;
+ float: none;
+ -webkit-box-sizing:
+        content-box;
+ -moz-box-sizing: content-box;
+ box-sizing:
+        content-box;
+ box-shadow: 5px 5px 15px #AAAAAA;
+
+        -webkit-box-shadow: 5px 5px 15px #AAAAAA;
+ -moz-box-shadow: 5px 5px
+        15px #AAAAAA;
+ -khtml-box-shadow: 5px 5px 15px #AAAAAA;
+
+        filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2,
+        Color='gray', Positive='true')
+ }
+
+
+        #MathJax_ZoomOverlay {
+ position: absolute;
+ left: 0;
+ top:
+        0;
+ z-index: 300;
+ display: inline-block;
+ width: 100%;
+
+        height: 100%;
+ border: 0;
+ padding: 0;
+ margin: 0;
+
+        background-color: white;
+ opacity: 0;
+ filter: alpha(opacity=0)
+
+        }
+
+ #MathJax_ZoomFrame {
+ position: relative;
+ display:
+        inline-block;
+ height: 0;
+ width: 0
+ }
+
+
+        #MathJax_ZoomEventTrap {
+ position: absolute;
+ left: 0;
+
+        top: 0;
+ z-index: 302;
+ display: inline-block;
+ border: 0;
+
+        padding: 0;
+ margin: 0;
+ background-color: white;
+ opacity:
+        0;
+ filter: alpha(opacity=0)
+ }
+
+ .MathJax_Preview {
+
+        color: #888
+ }
+
+ #MathJax_Message {
+ position: fixed;
+
+        left: 1em;
+ bottom: 1.5em;
+ background-color: #E6E6E6;
+
+        border: 1px solid #959595;
+ margin: 0px;
+ padding: 2px 8px;
+
+        z-index: 102;
+ color: black;
+ font-size: 80%;
+ width: auto;
+
+        white-space: nowrap
+ }
+
+ #MathJax_MSIE_Frame {
+
+        position: absolute;
+ top: 0;
+ left: 0;
+ width: 0px;
+
+        z-index: 101;
+ border: 0px;
+ margin: 0px;
+ padding: 0px
+
+        }
+
+ .MathJax_Error {
+ color: #CC0000;
+ font-style:
+        italic
+ }
+
+ .MJXp-script {
+ font-size: .8em
+ }
+
+
+        .MJXp-right {
+ -webkit-transform-origin: right;
+
+        -moz-transform-origin: right;
+ -ms-transform-origin: right;
+
+        -o-transform-origin: right;
+ transform-origin: right
+ }
+
+
+        .MJXp-bold {
+ font-weight: bold
+ }
+
+ .MJXp-italic {
+
+        font-style: italic
+ }
+
+ .MJXp-scr {
+ font-family:
+        MathJax_Script, 'Times New Roman', Times, STIXGeneral, serif
+
+        }
+
+ .MJXp-frak {
+ font-family: MathJax_Fraktur, 'Times
+        New Roman', Times, STIXGeneral, serif
+ }
+
+ .MJXp-sf {
+
+        font-family: MathJax_SansSerif, 'Times New Roman', Times,
+        STIXGeneral, serif
+ }
+
+ .MJXp-cal {
+ font-family:
+        MathJax_Caligraphic, 'Times New Roman', Times, STIXGeneral,
+        serif
+ }
+
+ .MJXp-mono {
+ font-family:
+        MathJax_Typewriter, 'Times New Roman', Times, STIXGeneral,
+        serif
+ }
+
+ .MJXp-largeop {
+ font-size: 150%
+ }
+
+
+        .MJXp-largeop.MJXp-int {
+ vertical-align: -.2em
+ }
+
+
+        .MJXp-math {
+ display: inline-block;
+ line-height: 1.2;
+
+        text-indent: 0;
+ font-family: 'Times New Roman', Times,
+        STIXGeneral, serif;
+ white-space: nowrap;
+ border-collapse:
+        collapse
+ }
+
+ .MJXp-display {
+ display: block;
+
+        text-align: center;
+ margin: 1em 0
+ }
+
+ .MJXp-math span
+        {
+ display: inline-block
+ }
+
+ .MJXp-box {
+ display:
+        block !important;
+ text-align: center
+ }
+
+
+        .MJXp-box:after {
+ content: " "
+ }
+
+ .MJXp-rule {
+
+        display: block !important;
+ margin-top: .1em
+ }
+
+
+        .MJXp-char {
+ display: block !important
+ }
+
+ .MJXp-mo {
+
+        margin: 0 .15em
+ }
+
+ .MJXp-mfrac {
+ margin: 0 .125em;
+
+        vertical-align: .25em
+ }
+
+ .MJXp-denom {
+ display:
+        inline-table !important;
+ width: 100%
+ }
+
+ .MJXp-denom&gt;
+        * {
+ display: table-row !important
+ }
+
+ .MJXp-surd {
+
+        vertical-align: top
+ }
+
+ .MJXp-surd&gt; * {
+ display:
+        block !important
+ }
+
+ .MJXp-script-box&gt; * {
+
+        display: table !important;
+ height: 50%
+ }
+
+
+        .MJXp-script-box&gt; *&gt; * {
+ display: table-cell !important;
+
+        vertical-align: top
+ }
+
+ .MJXp-script-box&gt; *:last-child&gt;
+        * {
+ vertical-align: bottom
+ }
+
+ .MJXp-script-box&gt; *&gt;
+        *&gt; * {
+ display: block !important
+ }
+
+
+        .MJXp-mphantom {
+ visibility: hidden
+ }
+
+
+        .MJXp-munderover, .MJXp-munder {
+ display: inline-table !important
+
+        }
+
+ .MJXp-over {
+ display: inline-block !important;
+
+        text-align: center
+ }
+
+ .MJXp-over&gt; * {
+ display:
+        block !important
+ }
+
+ .MJXp-munderover&gt; *, .MJXp-munder&gt;
+        * {
+ display: table-row !important
+ }
+
+ .MJXp-mtable {
+
+        vertical-align: .25em;
+ margin: 0 .125em
+ }
+
+
+        .MJXp-mtable&gt; * {
+ display: inline-table !important;
+
+        vertical-align: middle
+ }
+
+ .MJXp-mtr {
+ display:
+        table-row !important
+ }
+
+ .MJXp-mtd {
+ display:
+        table-cell !important;
+ text-align: center;
+ padding: .5em 0 0
+        .5em
+ }
+
+ .MJXp-mtr&gt; .MJXp-mtd:first-child {
+
+        padding-left: 0
+ }
+
+ .MJXp-mtr:first-child&gt; .MJXp-mtd {
+
+        padding-top: 0
+ }
+
+ .MJXp-mlabeledtr {
+ display:
+        table-row !important
+ }
+
+ .MJXp-mlabeledtr&gt;
+        .MJXp-mtd:first-child {
+ padding-left: 0
+ }
+
+
+        .MJXp-mlabeledtr:first-child&gt; .MJXp-mtd {
+ padding-top: 0
+ }
+
+
+        .MJXp-merror {
+ background-color: #FFFF88;
+ color: #CC0000;
+
+        border: 1px solid #CC0000;
+ padding: 1px 3px;
+ font-style:
+        normal;
+ font-size: 90%
+ }
+
+ .MJXp-scale0 {
+
+        -webkit-transform: scaleX(.0);
+ -moz-transform: scaleX(.0);
+
+        -ms-transform: scaleX(.0);
+ -o-transform: scaleX(.0);
+
+        transform: scaleX(.0)
+ }
+
+ .MJXp-scale1 {
+
+        -webkit-transform: scaleX(.1);
+ -moz-transform: scaleX(.1);
+
+        -ms-transform: scaleX(.1);
+ -o-transform: scaleX(.1);
+
+        transform: scaleX(.1)
+ }
+
+ .MJXp-scale2 {
+
+        -webkit-transform: scaleX(.2);
+ -moz-transform: scaleX(.2);
+
+        -ms-transform: scaleX(.2);
+ -o-transform: scaleX(.2);
+
+        transform: scaleX(.2)
+ }
+
+ .MJXp-scale3 {
+
+        -webkit-transform: scaleX(.3);
+ -moz-transform: scaleX(.3);
+
+        -ms-transform: scaleX(.3);
+ -o-transform: scaleX(.3);
+
+        transform: scaleX(.3)
+ }
+
+ .MJXp-scale4 {
+
+        -webkit-transform: scaleX(.4);
+ -moz-transform: scaleX(.4);
+
+        -ms-transform: scaleX(.4);
+ -o-transform: scaleX(.4);
+
+        transform: scaleX(.4)
+ }
+
+ .MJXp-scale5 {
+
+        -webkit-transform: scaleX(.5);
+ -moz-transform: scaleX(.5);
+
+        -ms-transform: scaleX(.5);
+ -o-transform: scaleX(.5);
+
+        transform: scaleX(.5)
+ }
+
+ .MJXp-scale6 {
+
+        -webkit-transform: scaleX(.6);
+ -moz-transform: scaleX(.6);
+
+        -ms-transform: scaleX(.6);
+ -o-transform: scaleX(.6);
+
+        transform: scaleX(.6)
+ }
+
+ .MJXp-scale7 {
+
+        -webkit-transform: scaleX(.7);
+ -moz-transform: scaleX(.7);
+
+        -ms-transform: scaleX(.7);
+ -o-transform: scaleX(.7);
+
+        transform: scaleX(.7)
+ }
+
+ .MJXp-scale8 {
+
+        -webkit-transform: scaleX(.8);
+ -moz-transform: scaleX(.8);
+
+        -ms-transform: scaleX(.8);
+ -o-transform: scaleX(.8);
+
+        transform: scaleX(.8)
+ }
+
+ .MJXp-scale9 {
+
+        -webkit-transform: scaleX(.9);
+ -moz-transform: scaleX(.9);
+
+        -ms-transform: scaleX(.9);
+ -o-transform: scaleX(.9);
+
+        transform: scaleX(.9)
+ }
+
+ .MathJax_PHTML .noError {
+
+        vertical-align: ;
+ font-size: 90%;
+ text-align: left;
+
+        color: black;
+ padding: 1px 3px;
+ border: 1px solid
+ }
+
+
+        .mjx-chtml {
+ display: inline-block;
+ line-height: 0;
+
+        text-indent: 0;
+ text-align: left;
+ text-transform: none;
+
+        font-style: normal;
+ font-weight: normal;
+ font-size: 100%;
+
+        font-size-adjust: none;
+ letter-spacing: normal;
+ word-wrap:
+        normal;
+ word-spacing: normal;
+ white-space: nowrap;
+
+        float: none;
+ direction: ltr;
+ max-width: none;
+
+        max-height: none;
+ min-width: 0;
+ min-height: 0;
+ border:
+        0;
+ margin: 0;
+ padding: 1px 0
+ }
+
+ .MJXc-display {
+
+        display: block;
+ text-align: center;
+ margin: 1em 0;
+
+        padding: 0
+ }
+
+ .mjx-chtml[tabindex]:focus, body :focus
+        .mjx-chtml[tabindex] {
+ display: inline-table
+ }
+
+
+        .mjx-full-width {
+ text-align: center;
+ display: table-cell
+        !important;
+ width: 10000em
+ }
+
+ .mjx-math {
+
+        display: inline-block;
+ border-collapse: separate;
+
+        border-spacing: 0
+ }
+
+ .mjx-math * {
+ display:
+        inline-block;
+ -webkit-box-sizing: content-box !important;
+
+        -moz-box-sizing: content-box !important;
+ box-sizing: content-box
+        !important;
+ text-align: left
+ }
+
+ .mjx-numerator {
+
+        display: block;
+ text-align: center
+ }
+
+
+        .mjx-denominator {
+ display: block;
+ text-align: center
+ }
+
+
+        .MJXc-stacked {
+ height: 0;
+ position: relative
+ }
+
+
+        .MJXc-stacked&gt; * {
+ position: absolute
+ }
+
+
+        .MJXc-bevelled&gt; * {
+ display: inline-block
+ }
+
+
+        .mjx-stack {
+ display: inline-block
+ }
+
+ .mjx-op {
+
+        display: block
+ }
+
+ .mjx-under {
+ display: table-cell
+
+        }
+
+ .mjx-over {
+ display: block
+ }
+
+ .mjx-over&gt;
+        * {
+ padding-left: 0px !important;
+ padding-right: 0px
+        !important
+ }
+
+ .mjx-under&gt; * {
+ padding-left: 0px
+        !important;
+ padding-right: 0px !important
+ }
+
+
+        .mjx-stack&gt; .mjx-sup {
+ display: block
+ }
+
+
+        .mjx-stack&gt; .mjx-sub {
+ display: block
+ }
+
+
+        .mjx-prestack&gt; .mjx-presup {
+ display: block
+ }
+
+
+        .mjx-prestack&gt; .mjx-presub {
+ display: block
+ }
+
+
+        .mjx-delim-h&gt; .mjx-char {
+ display: inline-block
+ }
+
+
+        .mjx-surd {
+ vertical-align: top
+ }
+
+ .mjx-mphantom * {
+
+        visibility: hidden
+ }
+
+ .mjx-merror {
+
+        background-color: #FFFF88;
+ color: #CC0000;
+ border: 1px solid
+        #CC0000;
+ padding: 2px 3px;
+ font-style: normal;
+
+        font-size: 90%
+ }
+
+ .mjx-annotation-xml {
+ line-height:
+        normal
+ }
+
+ .mjx-menclose&gt; svg {
+ fill: none;
+
+        stroke: currentColor
+ }
+
+ .mjx-mtr {
+ display:
+        table-row
+ }
+
+ .mjx-mlabeledtr {
+ display: table-row
+
+        }
+
+ .mjx-mtd {
+ display: table-cell;
+ text-align:
+        center
+ }
+
+ .mjx-label {
+ display: table-row
+ }
+
+
+        .mjx-box {
+ display: inline-block
+ }
+
+ .mjx-block {
+
+        display: block
+ }
+
+ .mjx-span {
+ display: inline
+ }
+
+
+        .mjx-char {
+ display: block;
+&lt;!-- white-space: pre--&gt;&lt;!--
+        Remove this because it keeps white spaces in exported SVGs, which makes
+        the texts very long --&gt;
+ }
+
+ .mjx-itable {
+ display:
+        inline-table;
+ width: auto
+ }
+
+ .mjx-row {
+
+        display: table-row
+ }
+
+ .mjx-cell {
+ display:
+        table-cell
+ }
+
+ .mjx-table {
+ display: table;
+
+        width: 100%
+ }
+
+ .mjx-line {
+ display: block;
+
+        height: 0
+ }
+
+ .mjx-strut {
+ width: 0;
+
+        padding-top: 1em
+ }
+
+ .mjx-vsize {
+ width: 0
+ }
+
+
+        .MJXc-space1 {
+ margin-left: .167em
+ }
+
+ .MJXc-space2 {
+
+        margin-left: .222em
+ }
+
+ .MJXc-space3 {
+ margin-left:
+        .278em
+ }
+
+ .mjx-chartest {
+ display: block;
+
+        visibility: hidden;
+ position: absolute;
+ top: 0;
+
+        line-height: normal;
+ font-size: 500%
+ }
+
+
+        .mjx-chartest .mjx-char {
+ display: inline
+ }
+
+
+        .mjx-chartest .mjx-box {
+ padding-top: 1000px
+ }
+
+
+        .MJXc-processing {
+ visibility: hidden;
+ position: fixed;
+
+        width: 0;
+ height: 0;
+ overflow: hidden
+ }
+
+
+        .MJXc-processed {
+ display: none
+ }
+
+ .mjx-test {
+
+        font-style: normal;
+ font-weight: normal;
+ font-size: 100%;
+
+        font-size-adjust: none;
+ text-indent: 0;
+ text-transform: none;
+
+        letter-spacing: normal;
+ word-spacing: normal;
+ overflow:
+        hidden;
+ height: 1px
+ }
+
+ .mjx-test.mjx-test-display {
+
+        display: table !important
+ }
+
+ .mjx-test.mjx-test-inline {
+
+        display: inline !important;
+ margin-right: -1px
+ }
+
+
+        .mjx-test.mjx-test-default {
+ display: block !important;
+
+        clear: both
+ }
+
+ .mjx-ex-box {
+ display: inline-block
+        !important;
+ position: absolute;
+ overflow: hidden;
+
+        min-height: 0;
+ max-height: none;
+ padding: 0;
+ border: 0;
+
+        margin: 0;
+ width: 1px;
+ height: 60ex
+ }
+
+
+        .mjx-test-inline .mjx-left-box {
+ display: inline-block;
+
+        width: 0;
+ float: left
+ }
+
+ .mjx-test-inline
+        .mjx-right-box {
+ display: inline-block;
+ width: 0;
+ float:
+        right
+ }
+
+ .mjx-test-display .mjx-right-box {
+ display:
+        table-cell !important;
+ width: 10000em !important;
+ min-width:
+        0;
+ max-width: none;
+ padding: 0;
+ border: 0;
+ margin:
+        0
+ }
+
+ #MathJax_CHTML_Tooltip {
+ background-color:
+        InfoBackground;
+ color: InfoText;
+ border: 1px solid black;
+
+        box-shadow: 2px 2px 5px #AAAAAA;
+ -webkit-box-shadow: 2px 2px 5px
+        #AAAAAA;
+ -moz-box-shadow: 2px 2px 5px #AAAAAA;
+
+        -khtml-box-shadow: 2px 2px 5px #AAAAAA;
+ padding: 3px 4px;
+
+        z-index: 401;
+ position: absolute;
+ left: 0;
+ top: 0;
+
+        width: auto;
+ height: auto;
+ display: none
+ }
+
+
+        .mjx-chtml .mjx-noError {
+ line-height: 1.2;
+ vertical-align: ;
+
+        font-size: 90%;
+ text-align: left;
+ color: black;
+ padding:
+        1px 3px;
+ border: 1px solid
+ }
+
+ .MJXc-TeX-unknown-R {
+
+        font-family: STIXGeneral, 'Cambria Math', 'Arial Unicode MS',
+        serif;
+ font-style: normal;
+ font-weight: normal
+ }
+
+
+        .MJXc-TeX-unknown-I {
+ font-family: STIXGeneral, 'Cambria Math',
+        'Arial Unicode MS', serif;
+ font-style: italic;
+
+        font-weight: normal
+ }
+
+ .MJXc-TeX-unknown-B {
+
+        font-family: STIXGeneral, 'Cambria Math', 'Arial Unicode MS',
+        serif;
+ font-style: normal;
+ font-weight: bold
+ }
+
+
+        .MJXc-TeX-unknown-BI {
+ font-family: STIXGeneral, 'Cambria Math',
+        'Arial Unicode MS', serif;
+ font-style: italic;
+
+        font-weight: bold
+ }
+
+ .MJXc-TeX-ams-R {
+ font-family:
+        MJXc-TeX-ams-R, MJXc-TeX-ams-Rw
+ }
+
+ .MJXc-TeX-cal-B {
+
+        font-family: MJXc-TeX-cal-B, MJXc-TeX-cal-Bx, MJXc-TeX-cal-Bw
+ }
+
+
+        .MJXc-TeX-frak-R {
+ font-family: MJXc-TeX-frak-R, MJXc-TeX-frak-Rw
+
+        }
+
+ .MJXc-TeX-frak-B {
+ font-family: MJXc-TeX-frak-B,
+        MJXc-TeX-frak-Bx, MJXc-TeX-frak-Bw
+ }
+
+ .MJXc-TeX-math-BI {
+
+        font-family: MJXc-TeX-math-BI, MJXc-TeX-math-BIx, MJXc-TeX-math-BIw
+
+        }
+
+ .MJXc-TeX-sans-R {
+ font-family: MJXc-TeX-sans-R,
+        MJXc-TeX-sans-Rw
+ }
+
+ .MJXc-TeX-sans-B {
+ font-family:
+        MJXc-TeX-sans-B, MJXc-TeX-sans-Bx, MJXc-TeX-sans-Bw
+ }
+
+
+        .MJXc-TeX-sans-I {
+ font-family: MJXc-TeX-sans-I, MJXc-TeX-sans-Ix,
+        MJXc-TeX-sans-Iw
+ }
+
+ .MJXc-TeX-script-R {
+
+        font-family: MJXc-TeX-script-R, MJXc-TeX-script-Rw
+ }
+
+
+        .MJXc-TeX-type-R {
+ font-family: MJXc-TeX-type-R, MJXc-TeX-type-Rw
+
+        }
+
+ .MJXc-TeX-cal-R {
+ font-family: MJXc-TeX-cal-R,
+        MJXc-TeX-cal-Rw
+ }
+
+ .MJXc-TeX-main-B {
+ font-family:
+        MJXc-TeX-main-B, MJXc-TeX-main-Bx, MJXc-TeX-main-Bw
+ }
+
+
+        .MJXc-TeX-main-I {
+ font-family: MJXc-TeX-main-I, MJXc-TeX-main-Ix,
+        MJXc-TeX-main-Iw
+ }
+
+ .MJXc-TeX-main-R {
+ font-family:
+        MJXc-TeX-main-R, MJXc-TeX-main-Rw
+ }
+
+ .MJXc-TeX-math-I {
+
+        font-family: MJXc-TeX-math-I, MJXc-TeX-math-Ix, MJXc-TeX-math-Iw
+ }
+
+
+        .MJXc-TeX-size1-R {
+ font-family: MJXc-TeX-size1-R,
+        MJXc-TeX-size1-Rw
+ }
+
+ .MJXc-TeX-size2-R {
+
+        font-family: MJXc-TeX-size2-R, MJXc-TeX-size2-Rw
+ }
+
+
+        .MJXc-TeX-size3-R {
+ font-family: MJXc-TeX-size3-R,
+        MJXc-TeX-size3-Rw
+ }
+
+ .MJXc-TeX-size4-R {
+
+        font-family: MJXc-TeX-size4-R, MJXc-TeX-size4-Rw
+ }
+
+
+        .MJXc-TeX-vec-R {
+ font-family: MJXc-TeX-vec-R, MJXc-TeX-vec-Rw
+
+        }
+
+ .MJXc-TeX-vec-B {
+ font-family: MJXc-TeX-vec-B,
+        MJXc-TeX-vec-Bx, MJXc-TeX-vec-Bw
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-ams-R;
+ src: local('MathJax_AMS'),
+        local('MathJax_AMS-Regular')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-ams-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_AMS-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-cal-B;
+ src: local('MathJax_Caligraphic
+        Bold'), local('MathJax_Caligraphic-Bold')
+ }
+
+
+        @font-face {
+ font-family: MJXc-TeX-cal-Bx;
+ src: local('MathJax_Caligraphic');
+
+        font-weight: bold
+ }
+
+ @font-face {
+ font-family:
+        MJXc-TeX-cal-Bw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Bold.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Bold.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Bold.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-frak-R;
+ src: local('MathJax_Fraktur'),
+        local('MathJax_Fraktur-Regular')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-frak-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-frak-B;
+ src: local('MathJax_Fraktur Bold'),
+        local('MathJax_Fraktur-Bold')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-frak-Bx;
+ src: local('MathJax_Fraktur');
+
+        font-weight: bold
+ }
+
+ @font-face {
+ font-family:
+        MJXc-TeX-frak-Bw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Bold.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Bold.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Bold.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-math-BI;
+ src: local('MathJax_Math
+        BoldItalic'), local('MathJax_Math-BoldItalic')
+ }
+
+
+        @font-face {
+ font-family: MJXc-TeX-math-BIx;
+ src: local('MathJax_Math');
+
+        font-weight: bold;
+ font-style: italic
+ }
+
+ @font-face
+        {
+ font-family: MJXc-TeX-math-BIw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Math-BoldItalic.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Math-BoldItalic.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-sans-R;
+ src: local('MathJax_SansSerif'),
+        local('MathJax_SansSerif-Regular')
+ }
+
+ @font-face
+        {
+ font-family: MJXc-TeX-sans-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-sans-B;
+ src: local('MathJax_SansSerif
+        Bold'), local('MathJax_SansSerif-Bold')
+ }
+
+
+        @font-face {
+ font-family: MJXc-TeX-sans-Bx;
+ src: local('MathJax_SansSerif');
+
+        font-weight: bold
+ }
+
+ @font-face {
+ font-family:
+        MJXc-TeX-sans-Bw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Bold.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Bold.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Bold.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-sans-I;
+ src: local('MathJax_SansSerif
+        Italic'), local('MathJax_SansSerif-Italic')
+ }
+
+
+        @font-face {
+ font-family: MJXc-TeX-sans-Ix;
+ src: local('MathJax_SansSerif');
+
+        font-style: italic
+ }
+
+ @font-face {
+ font-family:
+        MJXc-TeX-sans-Iw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Italic.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Italic.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Italic.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-script-R;
+ src: local('MathJax_Script'),
+        local('MathJax_Script-Regular')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-script-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Script-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Script-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Script-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-type-R;
+ src: local('MathJax_Typewriter'),
+        local('MathJax_Typewriter-Regular')
+ }
+
+ @font-face
+        {
+ font-family: MJXc-TeX-type-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Typewriter-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Typewriter-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Typewriter-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-cal-R;
+ src: local('MathJax_Caligraphic'),
+        local('MathJax_Caligraphic-Regular')
+ }
+
+
+        @font-face {
+ font-family: MJXc-TeX-cal-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-main-B;
+ src: local('MathJax_Main Bold'),
+        local('MathJax_Main-Bold')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-main-Bx;
+ src: local('MathJax_Main');
+
+        font-weight: bold
+ }
+
+ @font-face {
+ font-family:
+        MJXc-TeX-main-Bw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Main-Bold.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-main-I;
+ src: local('MathJax_Main Italic'),
+        local('MathJax_Main-Italic')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-main-Ix;
+ src: local('MathJax_Main');
+
+        font-style: italic
+ }
+
+ @font-face {
+ font-family:
+        MJXc-TeX-main-Iw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Main-Italic.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-main-R;
+ src: local('MathJax_Main'),
+        local('MathJax_Main-Regular')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-main-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-math-I;
+ src: local('MathJax_Math Italic'),
+        local('MathJax_Math-Italic')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-math-Ix;
+ src: local('MathJax_Math');
+
+        font-style: italic
+ }
+
+ @font-face {
+ font-family:
+        MJXc-TeX-math-Iw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-size1-R;
+ src: local('MathJax_Size1'),
+        local('MathJax_Size1-Regular')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-size1-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Size1-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-size2-R;
+ src: local('MathJax_Size2'),
+        local('MathJax_Size2-Regular')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-size2-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Size2-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-size3-R;
+ src: local('MathJax_Size3'),
+        local('MathJax_Size3-Regular')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-size3-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Size3-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-size4-R;
+ src: local('MathJax_Size4'),
+        local('MathJax_Size4-Regular')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-size4-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-vec-R;
+ src: local('MathJax_Vector'),
+        local('MathJax_Vector-Regular')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-vec-Rw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Vector-Regular.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Vector-Regular.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Vector-Regular.otf')
+        format('opentype')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-vec-B;
+ src: local('MathJax_Vector Bold'),
+        local('MathJax_Vector-Bold')
+ }
+
+ @font-face {
+
+        font-family: MJXc-TeX-vec-Bx;
+ src: local('MathJax_Vector');
+
+        font-weight: bold
+ }
+
+ @font-face {
+ font-family:
+        MJXc-TeX-vec-Bw;
+ src /*1*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Vector-Bold.eot');
+
+        src /*2*/: url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Vector-Bold.woff')
+        format('woff'), url('https://www.digikey.com/schemeitcdn/static/js/library/MathJax-2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Vector-Bold.otf')
+        format('opentype')
+ }
+
+    </style> <defs> <linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="mx-gradient-transparent-1-transparent-1-s-0"> <stop offset="0%" style="stop-color:transparent"/> <stop offset="100%" style="stop-color:transparent"/> </linearGradient> </defs> <g transform=" scale(1) translate(-36,-115.5)"> <rect x="339" y="369" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="339" y="429" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <path d="M 327 391 C 353 391 353 391 353 391" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 340 371 L 340 390" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 340 410 L 340 429" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="323.92" y="394.92" width="32.16" height="10.16" fill="#ffffff" stroke="#000000" stroke-width="1.84" pointer-events="none"/> <path d="M 327 409 C 353 409 353 409 353 409" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <rect x="300" y="340" width="90" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="345" y="355"> X-tal 32.768KHz </text> </g> <rect x="254" y="344" width="2" height="2" fill="#000000" stroke="none" transform="rotate(90,255,370)" pointer-events="none"/> <rect x="254" y="394" width="2" height="2" fill="#000000" stroke="none" transform="rotate(90,255,370)" pointer-events="none"/> <path d="M 244 366 C 266 366 266 366 266 366" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(90,255,370)" pointer-events="none"/> <path d="M 244 374 C 266 374 266 374 266 374" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(90,255,370)" pointer-events="none"/> <path d="M 255 346 L 255 365" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(90,255,370)" pointer-events="none"/> <path d="M 255 375 L 255 394" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(90,255,370)" pointer-events="none"/> <rect x="240" y="340" width="30" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="255" y="355"> 12pF </text> </g> <rect x="179" y="269" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="239" y="269" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="179" y="299" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="225.64" cy="269.96" rx="2.48" ry="2.48" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 181 270 L 192 270" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 229 270 L 239 270" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 222.63 269.87 L 193.95 290.21 L 194.04 249.51 L 222.59 269.85" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 207 281.14 L 207 300 L 187 300" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 181 300 L 197 300" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="150" y="230" width="110" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="205" y="245"> ROHM BP5293-33 </text> </g> <rect x="49" y="149" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" text-anchor="middle" font-size="12px"> <text x="49.69" y="125.86"> +12V </text> </g> <path d="M 50 131 L 50 149" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 40 130 L 60 130" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="254" y="404" width="2" height="2" fill="#000000" stroke="none" transform="rotate(90,255,430)" pointer-events="none"/> <rect x="254" y="454" width="2" height="2" fill="#000000" stroke="none" transform="rotate(90,255,430)" pointer-events="none"/> <path d="M 244 426 C 266 426 266 426 266 426" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(90,255,430)" pointer-events="none"/> <path d="M 244 434 C 266 434 266 434 266 434" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(90,255,430)" pointer-events="none"/> <path d="M 255 406 L 255 425" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(90,255,430)" pointer-events="none"/> <path d="M 255 435 L 255 454" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(90,255,430)" pointer-events="none"/> <rect x="240" y="400" width="30" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="255" y="415"> 12pF </text> </g> <rect x="419" y="369" width="2" height="2" fill="#000000" stroke="none" transform="rotate(180,420,400)" pointer-events="none"/> <rect x="419" y="429" width="2" height="2" fill="#000000" stroke="none" transform="rotate(180,420,400)" pointer-events="none"/> <path d="M 420 382 L 427 385 L 420 388" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(180,420,400)" pointer-events="none"/> <path d="M 420 388 L 413 391 L 420 394" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(180,420,400)" pointer-events="none"/> <path d="M 420 394 L 427 397 L 420 400" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(180,420,400)" pointer-events="none"/> <path d="M 420 400 L 413 403 L 420 406" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(180,420,400)" pointer-events="none"/> <path d="M 420 406 L 427 409 L 420 412" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(180,420,400)" pointer-events="none"/> <path d="M 420 412 L 413 415 L 420 418" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(180,420,400)" pointer-events="none"/> <path d="M 420 371 L 420 381" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(180,420,400)" pointer-events="none"/> <path d="M 420 419 L 420 429" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(180,420,400)" pointer-events="none"/> <rect x="430" y="390" width="40" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="450" y="405"> 9.9MΩ </text> </g> <rect x="144" y="294" width="2" height="2" fill="#000000" stroke="none" transform="rotate(90,145,320)" pointer-events="none"/> <rect x="144" y="344" width="2" height="2" fill="#000000" stroke="none" transform="rotate(90,145,320)" pointer-events="none"/> <path d="M 134 316 C 156 316 156 316 156 316" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(90,145,320)" pointer-events="none"/> <path d="M 134 324 C 156 324 156 324 156 324" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(90,145,320)" pointer-events="none"/> <path d="M 145 296 L 145 315" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(90,145,320)" pointer-events="none"/> <path d="M 145 325 L 145 344" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(90,145,320)" pointer-events="none"/> <rect x="130" y="290" width="30" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="145" y="305"> 10μF </text> </g> <rect x="234" y="294" width="2" height="2" fill="#000000" stroke="none" transform="rotate(90,235,320)" pointer-events="none"/> <rect x="234" y="344" width="2" height="2" fill="#000000" stroke="none" transform="rotate(90,235,320)" pointer-events="none"/> <path d="M 224 316 C 246 316 246 316 246 316" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(90,235,320)" pointer-events="none"/> <path d="M 224 324 C 246 324 246 324 246 324" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(90,235,320)" pointer-events="none"/> <path d="M 235 296 L 235 315" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(90,235,320)" pointer-events="none"/> <path d="M 235 325 L 235 344" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(90,235,320)" pointer-events="none"/> <rect x="220" y="290" width="30" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="235" y="305"> 10μF </text> </g> <rect x="539" y="269" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="540" cy="260" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 265 L 540 269" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 540 270 L 240 270" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <rect x="520" y="240" width="100" height="680" fill="url(#mx-gradient-transparent-1-transparent-1-s-0)" stroke="#000000" pointer-events="none"/> <rect x="510" y="210" width="130" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 124px; height: 1px; padding-top: 217px; margin-left: 514px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; font-weight: bold; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> <span> ESP32-DevKitC-32E </span> <br /> </p> </div> </div> </div> </foreignObject> </g> <rect x="539" y="369" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="540" cy="360" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 365 L 540 369" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="539" y="429" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="540" cy="420" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 425 L 540 429" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="539" y="319" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="540" cy="310" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 315 L 540 319" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 540 370 L 280 370" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 340 370 L 340 370" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="340" cy="370" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 280 430 L 360 430 L 540 430" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 340 430 L 340 430" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="340" cy="430" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <rect x="550" y="250" width="80" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 74px; height: 1px; padding-top: 257px; margin-left: 554px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> 3V3 </p> </div> </div> </div> </foreignObject> </g> <rect x="550" y="350" width="80" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 74px; height: 1px; padding-top: 357px; margin-left: 554px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> IO32 </p> </div> </div> </div> </foreignObject> </g> <rect x="550" y="410" width="80" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 74px; height: 1px; padding-top: 417px; margin-left: 554px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> IO33 </p> </div> </div> </div> </foreignObject> </g> <rect x="550" y="300" width="80" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 74px; height: 1px; padding-top: 307px; margin-left: 554px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> GND </p> </div> </div> </div> </foreignObject> </g> <rect x="110" y="120" width="450" height="40" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 444px; height: 1px; padding-top: 127px; margin-left: 114px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 31px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> <font style="font-size: 2em"> <b> Hare Tortoise Clock Schematic Diagram </b> </font> </p> </div> </div> </div> </foreignObject> </g> <rect x="110" y="150" width="280" height="40" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 274px; height: 1px; padding-top: 157px; margin-left: 114px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 31px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> https://github.com/ayumu-bekki/hare_tortoise_clock </p> </div> </div> </div> </foreignObject> </g> <path d="M 260 320 L 280 320 L 280 272" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="280" cy="270" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 420 430 L 420 430" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="420" cy="430" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 420 370 L 420 370" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="420" cy="370" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <rect x="489" y="319" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <path d="M 490 321 L 490 339" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 479 339.53 L 501 339.53 L 490 358.53 Z" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 540 320 L 490 320" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 180 300 L 170 300 L 170 318" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="170" cy="320" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 210 320 L 172 320" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="170" cy="320" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <rect x="119" y="499" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <path d="M 120 501 L 120 519" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 109 519.53 L 131 519.53 L 120 538.53 Z" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 120 500 L 170 500 L 170 322" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="170" cy="320" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 230 370 L 172 370" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="170" cy="370" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 230 430 L 172 430" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="170" cy="430" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <rect x="240" y="530" width="80" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 74px; height: 1px; padding-top: 537px; margin-left: 244px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; font-weight: bold; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> AT2100 x2 <br /> </p> </div> </div> </div> </foreignObject> </g> <rect x="220" y="560" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 567px; margin-left: 224px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> VMOT </p> </div> </div> </div> </foreignObject> </g> <rect x="209" y="579" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="210" cy="570" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 210 575 L 210 579" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="220" y="590" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 597px; margin-left: 224px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> GND </p> </div> </div> </div> </foreignObject> </g> <rect x="209" y="609" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="210" cy="600" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 210 605 L 210 609" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="220" y="620" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 627px; margin-left: 224px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> 2B </p> </div> </div> </div> </foreignObject> </g> <rect x="209" y="639" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="210" cy="630" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 210 635 L 210 639" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="220" y="650" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 657px; margin-left: 224px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> 2A </p> </div> </div> </div> </foreignObject> </g> <rect x="209" y="669" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="210" cy="660" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 210 665 L 210 669" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="220" y="680" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 687px; margin-left: 224px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> 1A </p> </div> </div> </div> </foreignObject> </g> <rect x="209" y="699" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="210" cy="690" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 210 695 L 210 699" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="220" y="740" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 747px; margin-left: 224px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> VDD </p> </div> </div> </div> </foreignObject> </g> <rect x="209" y="759" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="210" cy="750" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 210 755 L 210 759" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="220" y="770" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 777px; margin-left: 224px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> GND </p> </div> </div> </div> </foreignObject> </g> <rect x="209" y="789" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="210" cy="780" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 210 785 L 210 789" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="280" y="560" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 567px; margin-left: 284px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> EN </p> </div> </div> </div> </foreignObject> </g> <rect x="329" y="579" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="330" cy="570" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 330 575 L 330 579" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="280" y="590" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 597px; margin-left: 284px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> Opt </p> </div> </div> </div> </foreignObject> </g> <rect x="329" y="609" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="330" cy="600" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 330 605 L 330 609" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="280" y="620" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 627px; margin-left: 284px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> Opt </p> </div> </div> </div> </foreignObject> </g> <rect x="329" y="639" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="330" cy="630" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 330 635 L 330 639" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="280" y="650" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 657px; margin-left: 284px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> Opt </p> </div> </div> </div> </foreignObject> </g> <rect x="329" y="669" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="330" cy="660" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 330 665 L 330 669" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="280" y="680" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 687px; margin-left: 284px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> RST </p> </div> </div> </div> </foreignObject> </g> <rect x="329" y="699" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="330" cy="690" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 330 695 L 330 699" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="280" y="710" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 717px; margin-left: 284px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> SLP </p> </div> </div> </div> </foreignObject> </g> <rect x="329" y="729" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="330" cy="720" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 330 725 L 330 729" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="280" y="740" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 747px; margin-left: 284px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> STEP </p> </div> </div> </div> </foreignObject> </g> <rect x="329" y="759" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="330" cy="750" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 330 755 L 330 759" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="280" y="770" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 777px; margin-left: 284px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> DIR </p> </div> </div> </div> </foreignObject> </g> <rect x="329" y="789" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="330" cy="780" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 330 785 L 330 789" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="220" y="710" width="40" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 717px; margin-left: 224px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> 1B </p> </div> </div> </div> </foreignObject> </g> <rect x="209" y="729" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="210" cy="720" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 210 725 L 210 729" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="179" y="869" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="179" y="909" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="199" y="929" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="239" y="929" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <path d="M 187 870 L 185 870" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 880 L 185 880" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 880 L 185 880" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 890 L 185 890" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 890 L 185 890" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 900 L 185 900" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 900 L 185 900" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 910 L 185 910" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="220" cy="890" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" text-anchor="middle" font-size="14px"> <text x="219.95" y="893"> M </text> </g> <path d="M 187 870 L 185 870" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 880 L 185 880" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 880 L 185 880" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 890 L 185 890" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 890 L 185 890" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 900 L 185 900" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 900 L 185 900" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 910 L 185 910" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="220" cy="890" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" text-anchor="middle" font-size="14px"> <text x="219.95" y="893"> M </text> </g> <path d="M 200 923 L 200 925 M 210 923 L 210 925 M 200 923.14 C 199.99 920.11 202.22 917.65 204.99 917.64 C 207.75 917.63 209.99 920.08 210 923.1 C 210 923.11 210 923.11 210 923.12 M 210 923 L 210 925 M 220 923 L 220 925 M 210 923.14 C 209.99 920.11 212.22 917.65 214.99 917.64 C 217.75 917.63 219.99 920.08 220 923.1 C 220 923.11 220 923.11 220 923.12 M 220 923 L 220 925 M 230 923 L 230 925 M 220 923.14 C 219.99 920.11 222.22 917.65 224.99 917.64 C 227.75 917.63 229.99 920.08 230 923.1 C 230 923.11 230 923.11 230 923.12 M 230 923 L 230 925 M 240 923 L 240 925 M 230 923.14 C 229.99 920.11 232.22 917.65 234.99 917.64 C 237.75 917.63 239.99 920.08 240 923.1 C 240 923.11 240 923.11 240 923.12 M 200 923 L 200 925 M 210 923 L 210 925 M 200 923.14 C 199.99 920.11 202.22 917.65 204.99 917.64 C 207.75 917.63 209.99 920.08 210 923.1 C 210 923.11 210 923.11 210 923.12 M 210 923 L 210 925 M 220 923 L 220 925 M 210 923.14 C 209.99 920.11 212.22 917.65 214.99 917.64 C 217.75 917.63 219.99 920.08 220 923.1 C 220 923.11 220 923.11 220 923.12 M 220 923 L 220 925 M 230 923 L 230 925 M 220 923.14 C 219.99 920.11 222.22 917.65 224.99 917.64 C 227.75 917.63 229.99 920.08 230 923.1 C 230 923.11 230 923.11 230 923.12 M 230 923 L 230 925 M 240 923 L 240 925 M 230 923.14 C 229.99 920.11 232.22 917.65 234.99 917.64 C 237.75 917.63 239.99 920.08 240 923.1 C 240 923.11 240 923.11 240 923.12 M 200 923 L 200 925 M 210 923 L 210 925 M 200 923.14 C 199.99 920.11 202.22 917.65 204.99 917.64 C 207.75 917.63 209.99 920.08 210 923.1 C 210 923.11 210 923.11 210 923.12 M 210 923 L 210 925 M 220 923 L 220 925 M 210 923.14 C 209.99 920.11 212.22 917.65 214.99 917.64 C 217.75 917.63 219.99 920.08 220 923.1 C 220 923.11 220 923.11 220 923.12 M 220 923 L 220 925 M 230 923 L 230 925 M 220 923.14 C 219.99 920.11 222.22 917.65 224.99 917.64 C 227.75 917.63 229.99 920.08 230 923.1 C 230 923.11 230 923.11 230 923.12 M 230 923 L 230 925 M 240 923 L 240 925 M 230 923.14 C 229.99 920.11 232.22 917.65 234.99 917.64 C 237.75 917.63 239.99 920.08 240 923.1 C 240 923.11 240 923.11 240 923.12" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 870 L 185 870" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 880 L 185 880" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 880 L 185 880" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 890 L 185 890" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 890 L 185 890" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 900 L 185 900" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 186.86 910 C 189.89 910.01 192.35 907.78 192.36 905.01 C 192.37 902.25 189.92 900.01 186.9 900 C 186.89 900 186.89 900 186.88 900 M 186.86 900 C 189.89 900.01 192.35 897.77 192.36 895.01 C 192.37 892.25 189.92 890.01 186.9 890 C 186.89 890 186.89 890 186.88 890 M 186.86 890 C 189.89 890.01 192.35 887.77 192.36 885.01 C 192.37 882.25 189.92 880.01 186.9 880 C 186.89 880 186.89 880 186.88 880 M 186.86 880 C 189.89 880.01 192.35 877.77 192.36 875.01 C 192.37 872.25 189.92 870.01 186.9 870 C 186.89 870 186.89 870 186.88 870 M 186.86 910 C 189.89 910.01 192.35 907.77 192.36 905.01 C 192.37 902.25 189.92 900.01 186.9 900 C 186.89 900 186.89 900 186.88 900 M 186.86 900 C 189.89 900.01 192.35 897.77 192.36 895.01 C 192.37 892.25 189.92 890.01 186.9 890 C 186.89 890 186.89 890 186.88 890 M 186.86 890 C 189.89 890.01 192.35 887.77 192.36 885.01 C 192.37 882.25 189.92 880.01 186.9 880 C 186.89 880 186.89 880 186.88 880 M 186.86 880 C 189.89 880.01 192.35 877.77 192.36 875.01 C 192.37 872.25 189.92 870.01 186.9 870 C 186.89 870 186.89 870 186.88 870 M 186.86 910 C 189.89 910.01 192.35 907.77 192.36 905.01 C 192.37 902.25 189.92 900.01 186.9 900 C 186.89 900 186.89 900 186.88 900 M 186.86 900 C 189.89 900.01 192.35 897.77 192.36 895.01 C 192.37 892.25 189.92 890.01 186.9 890 C 186.89 890 186.89 890 186.88 890 M 186.86 890 C 189.89 890.01 192.35 887.77 192.36 885.01 C 192.37 882.25 189.92 880.01 186.9 880 C 186.89 880 186.89 880 186.88 880 M 186.86 880 C 189.89 880 192.35 877.77 192.36 875.01 C 192.37 872.25 189.92 870.01 186.9 870 C 186.89 870 186.89 870 186.88 870" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 900 L 185 900" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 187 910 L 185 910" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="220" cy="890" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" text-anchor="middle" font-size="14px"> <text x="219.95" y="893"> M </text> </g> <path d="M 181 870 L 185 870" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 181 910 L 185 910" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 200 925 L 200 929" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 240 925 L 240 929" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="200" y="840" width="100" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="250" y="855"> Stepper Motor x2 </text> </g> <path d="M 210 700 L 140 700 L 140 870 L 180 870" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 180 910 L 150 910 L 150 730 L 210 730" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 200 930 L 130 930 L 130 670 L 210 670" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 210 640 L 120 640 L 120 950 L 240 950 L 240 930" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <rect x="179" y="809" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <path d="M 180 811 L 180 829" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 169 829.53 L 191 829.53 L 180 848.53 Z" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 210 610 L 180 610 L 180 810" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <rect x="49" y="759" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" text-anchor="middle" font-size="12px"> <text x="49.69" y="735.86"> +3.3V </text> </g> <path d="M 50 741 L 50 759" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 40 740 L 60 740" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 50 760 L 210 760" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 210 790 L 210 800 L 180 800 L 182 800" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="180" cy="800" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <rect x="124" y="584" width="2" height="2" fill="#000000" stroke="none" transform="translate(0,610)scale(1,-1)translate(0,-610)rotate(-90,125,610)" pointer-events="none"/> <rect x="124" y="634" width="2" height="2" fill="#000000" stroke="none" transform="translate(0,610)scale(1,-1)translate(0,-610)rotate(-90,125,610)" pointer-events="none"/> <path d="M 115 590 C 115 600 115 600 115 600" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-miterlimit="10" transform="translate(0,610)scale(1,-1)translate(0,-610)rotate(-90,125,610)" pointer-events="none"/> <path d="M 110 595 C 120 595 120 595 120 595" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-miterlimit="10" transform="translate(0,610)scale(1,-1)translate(0,-610)rotate(-90,125,610)" pointer-events="none"/> <path d="M 114 606 C 136 606 136 606 136 606" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="translate(0,610)scale(1,-1)translate(0,-610)rotate(-90,125,610)" pointer-events="none"/> <path d="M 114 618 C 119.92 612.56 129.99 612.65 136 618" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="translate(0,610)scale(1,-1)translate(0,-610)rotate(-90,125,610)" pointer-events="none"/> <path d="M 125 586 L 125 605" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="translate(0,610)scale(1,-1)translate(0,-610)rotate(-90,125,610)" pointer-events="none"/> <path d="M 125 615 L 125 634" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="translate(0,610)scale(1,-1)translate(0,-610)rotate(-90,125,610)" pointer-events="none"/> <rect x="59" y="614" width="60" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="89" y="629"> 100μF x2 </text> </g> <path d="M 150 610 L 178 610" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="180" cy="610" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <rect x="539" y="759" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="540" cy="750" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 755 L 540 759" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="550" y="770" width="50" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 44px; height: 1px; padding-top: 777px; margin-left: 554px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> IO26/12 </p> </div> </div> </div> </foreignObject> </g> <rect x="539" y="789" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="540" cy="780" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 785 L 540 789" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="550" y="740" width="50" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 44px; height: 1px; padding-top: 747px; margin-left: 554px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> IO27/13 </p> </div> </div> </div> </foreignObject> </g> <rect x="419" y="889" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="479" y="879" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="479" y="899" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <path d="M 434 889.64 L 455.19 883.08" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="432.5" cy="890.13" rx="2" ry="2" fill="none" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 421 890 L 429.51 890" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="465.5" cy="880.13" rx="2" ry="2" fill="none" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 468.5 880 L 479.01 880" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="465.5" cy="900.13" rx="2" ry="2" fill="none" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 468.5 900 L 479.01 900" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 452.6 880.72 L 463.99 880.28 L 454.41 886.45 Z" fill="#000000" stroke="#000000" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="390" y="900" width="95" height="13" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="437.5" y="911.5"> MicroSW Left x2 </text> </g> <path d="M 330 790 L 540 790" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 330 760 L 540 760" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <rect x="200" y="560" width="140" height="250" fill="url(#mx-gradient-transparent-1-transparent-1-s-0)" stroke="#000000" pointer-events="none"/> <rect x="419" y="839" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="479" y="829" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="479" y="849" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <path d="M 434 839.64 L 455.19 833.08" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="432.5" cy="840.13" rx="2" ry="2" fill="none" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 421 840 L 429.51 840" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="465.5" cy="830.13" rx="2" ry="2" fill="none" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 468.5 830 L 479.01 830" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="465.5" cy="850.13" rx="2" ry="2" fill="none" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 468.5 850 L 479.01 850" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 452.6 830.72 L 463.99 830.28 L 454.41 836.45 Z" fill="#000000" stroke="#000000" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="390" y="850" width="104" height="13" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="442" y="861.5"> MicroSW Right x2 </text> </g> <rect x="539" y="579" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="540" cy="570" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 575 L 540 579" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="550" y="560" width="50" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 44px; height: 1px; padding-top: 567px; margin-left: 554px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> IO25/14 </p> </div> </div> </div> </foreignObject> </g> <path d="M 330 580 L 540 580" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <rect x="379" y="909" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <path d="M 380 911 L 380 929" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 369 929.53 L 391 929.53 L 380 948.53 Z" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="539" y="829" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="540" cy="820" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 825 L 540 829" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="550" y="810" width="50" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 44px; height: 1px; padding-top: 817px; margin-left: 554px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> IO19/2 </p> </div> </div> </div> </foreignObject> </g> <rect x="539" y="879" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="540" cy="870" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 875 L 540 879" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="550" y="860" width="50" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 44px; height: 1px; padding-top: 867px; margin-left: 554px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> IO18/15 </p> </div> </div> </div> </foreignObject> </g> <path d="M 330 700 L 360 700 L 360 730 L 330 730" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <rect x="539" y="479" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <ellipse cx="540" cy="470" rx="4.135" ry="4.135" fill="#ffffff" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 475 L 540 479" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <rect x="550" y="460" width="50" height="30" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 44px; height: 1px; padding-top: 467px; margin-left: 554px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 21px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> IO17 </p> </div> </div> </div> </foreignObject> </g> <rect x="419" y="449" width="2" height="2" fill="#000000" stroke="none" transform="rotate(270,420,480)" pointer-events="none"/> <rect x="419" y="509" width="2" height="2" fill="#000000" stroke="none" transform="rotate(270,420,480)" pointer-events="none"/> <path d="M 420 462 L 427 465 L 420 468" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,420,480)" pointer-events="none"/> <path d="M 420 468 L 413 471 L 420 474" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,420,480)" pointer-events="none"/> <path d="M 420 474 L 427 477 L 420 480" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,420,480)" pointer-events="none"/> <path d="M 420 480 L 413 483 L 420 486" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,420,480)" pointer-events="none"/> <path d="M 420 486 L 427 489 L 420 492" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,420,480)" pointer-events="none"/> <path d="M 420 492 L 413 495 L 420 498" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,420,480)" pointer-events="none"/> <path d="M 420 451 L 420 461" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(270,420,480)" pointer-events="none"/> <path d="M 420 499 L 420 509" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(270,420,480)" pointer-events="none"/> <rect x="400" y="490" width="30" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="415" y="505"> 1kΩ </text> </g> <path d="M 450 480 L 540 480" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <rect x="289" y="439" width="2" height="2" fill="#000000" stroke="none" transform="rotate(270,300,470)" pointer-events="none"/> <rect x="289" y="499" width="2" height="2" fill="#000000" stroke="none" transform="rotate(270,300,470)" pointer-events="none"/> <ellipse cx="290" cy="470" rx="19.644082235" ry="19.644082235" fill="#ffffff" stroke="#000000" stroke-width="2" transform="rotate(270,300,470)" pointer-events="none"/> <path d="M 282 462.26 C 304 462.26 298 462.26 298 462.26" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,300,470)" pointer-events="none"/> <path d="M 289.86 462.54 C 289.86 462.54 289.86 462.54 282 477.26 C 297.72 477.26 297.72 477.26 297.72 477.26 Z" fill="#000000" stroke="#000000" stroke-width="1.49" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,300,470)" pointer-events="none"/> <path d="M 290 441 L 290 499" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(270,300,470)" pointer-events="none"/> <path d="M 316.5 461.02 L 320.74 465.26 L 323.57 458.19 Z" fill="#000000" stroke="#000000" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="10" transform="rotate(270,300,470)" pointer-events="none"/> <path d="M 312.25 469.52 L 320.74 461.04" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,300,470)" pointer-events="none"/> <path d="M 314.82 449.96 L 319.06 454.21 L 321.89 447.14 Z" fill="#000000" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,300,470)" pointer-events="none"/> <path d="M 310.59 458.43 L 319.08 449.95" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" transform="rotate(270,300,470)" pointer-events="none"/> <rect x="270" y="500" width="17" height="13" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="278.5" y="511.5"> D1 </text> </g> <path d="M 390 480 L 330 480" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 270 480 L 172 480" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="170" cy="480" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 540 880 L 480 880" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 540 830 L 480 830" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 420 840 L 380 840 L 380 910" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 420 890 L 382 890" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="380" cy="890" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <rect x="49" y="169" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <rect x="49" y="229" width="2" height="2" fill="#000000" stroke="none" pointer-events="none"/> <path d="M 50 182 L 57 185 L 50 188" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 50 188 L 43 191 L 50 194" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 50 194 L 57 197 L 50 200" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 50 200 L 43 203 L 50 206" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 50 206 L 57 209 L 50 212" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 50 212 L 43 215 L 50 218" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <path d="M 50 171 L 50 181" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 50 219 L 50 229" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" pointer-events="none"/> <path d="M 40.05 178.16 L 40 185 L 60 215 L 60 222.27" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/> <rect x="65" y="187" width="90" height="20" fill-opacity="0" fill="#dae2f2" stroke="none" pointer-events="none"/> <g fill="#000000" font-family="Arial,Helvetica" font-weight="bold" text-anchor="middle" font-size="12px"> <text x="110" y="202"> POLYSW 1.6A </text> </g> <path d="M 50 170 L 50 150" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 50 230 L 50 610 L 100 610" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <path d="M 180 270 L 52 270" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="50" cy="270" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 120 320 L 100 320 L 100 272" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="100" cy="270" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <path d="M 210 580 L 52 580" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/> <ellipse cx="50" cy="580" rx="2" ry="2" fill="#000000" stroke="#000000" stroke-width="2" pointer-events="none"/> <rect x="360" y="690" width="130" height="40" fill="transparent" stroke="transparent" pointer-events="none"/> <g> <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%"> <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 124px; height: 1px; padding-top: 697px; margin-left: 364px;"> <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 31px; overflow: hidden; "> <div style="display: inline-block; font-size: 12px; font-family: Helvetica,Arial; color: #000; line-height: 1.2; pointer-events: none; font-weight: bold; white-space: normal; word-wrap: normal; "> <p style="margin: 0px"> (Option) <br /> A4988  <span> compatible </span> </p> </div> </div> </div> </foreignObject> </g> </g> </svg>

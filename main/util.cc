@@ -1,4 +1,4 @@
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -17,7 +17,7 @@
 #include "gpio_control.h"
 #include "logger.h"
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 namespace Util {
 
 /// Sleep
@@ -82,4 +82,4 @@ std::vector<std::string> SplitString(const std::string& str, const char delim) {
 }
 
 }  // namespace Util
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem

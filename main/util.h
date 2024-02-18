@@ -1,6 +1,6 @@
 #ifndef UTIL_H_
 #define UTIL_H_
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-namespace RabbitClockSystem::Util {
+namespace HareTortoiseClockSystem::Util {
 
 /// Sleep
 void SleepMillisecond(const uint32_t sleep_milliseconds);
@@ -43,6 +43,6 @@ std::chrono::minutes GetChronoHourMinutes(const std::tm& time_info);
 /// Split Text
 std::vector<std::string> SplitString(const std::string& str, const char delim);
 
-}  // namespace RabbitClockSystem::Util
+}  // namespace HareTortoiseClockSystem::Util
 
 #endif  // UTIL_H_

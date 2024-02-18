@@ -1,13 +1,13 @@
 #ifndef GPIO_H_
 #define GPIO_H_
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
 #include <driver/gpio.h>
 #include <stdint.h>
 
-namespace RabbitClockSystem::GPIO {
+namespace HareTortoiseClockSystem::GPIO {
 
 /// Init GPIO ISR Service
 void InitGpioIsrService();
@@ -27,6 +27,6 @@ void SetLevel(const gpio_num_t gpio_number, const bool level);
 /// Gett GPIO Level (Input)
 bool GetLevel(const gpio_num_t gpio_number);
 
-}  // namespace RabbitClockSystem::GPIO
+}  // namespace HareTortoiseClockSystem::GPIO
 
 #endif  // GPIO_H_

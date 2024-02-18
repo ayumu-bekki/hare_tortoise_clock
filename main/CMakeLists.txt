@@ -1,7 +1,7 @@
 idf_component_register(SRCS "main.cc"
                             "logger.cc"
                             "util.cc"
-                            "rabbit_clock.cc"
+                            "hare_tortoise_clock.cc"
                             "gpio_control.cc"
                             "task.cc"
                             "ble_device.cc"

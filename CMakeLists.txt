@@ -1,10 +1,10 @@
 # CMakefile
-# RabbitClock
+# HareTortoiseClock
 
 cmake_minimum_required(VERSION 3.5)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(irrigation_system)
+project(hare_tortoise_clock)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

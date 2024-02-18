@@ -1,4 +1,4 @@
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -7,7 +7,7 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
 Task::Task() = default;
 
@@ -50,4 +50,4 @@ void Task::Listener(void* const pParam) {
   vTaskDelete(nullptr);
 }
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem

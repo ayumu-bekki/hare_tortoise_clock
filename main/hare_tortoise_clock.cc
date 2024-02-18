@@ -1,8 +1,8 @@
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
-#include "rabbit_clock.h"
+#include "hare_tortoise_clock.h"
 
 #include <driver/gpio.h>
 #include <esp_system.h>
@@ -18,17 +18,17 @@
 #include "ble_device.h"
 #include "ble_services.h"
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
-RabbitClock::RabbitClock() : clock_management_task_() {}
+HareTortoiseClock::HareTortoiseClock() : clock_management_task_() {}
 
-RabbitClock::~RabbitClock() = default;
+HareTortoiseClock::~HareTortoiseClock() = default;
 
-void RabbitClock::Start() {
+void HareTortoiseClock::Start() {
   // Initialize Log
   Logger::InitializeLogLevel();
 
-  ESP_LOGI(TAG, "Startup Rabbit Clock. Version:%s", std::string(GIT_VERSION).c_str());
+  ESP_LOGI(TAG, "Startup Hare Tortoise Clock. Version:%s", std::string(GIT_VERSION).c_str());
 
   // Monitoring LED Init And ON
   GPIO::InitOutput(static_cast<gpio_num_t>(CONFIG_MONITORING_OUTPUT_GPIO_NO),
@@ -58,14 +58,14 @@ void RabbitClock::Start() {
       std::make_shared<ClockManagementTask>(weak_from_this());
   clock_management_task_->Start();
 
-  ESP_LOGI(TAG, "Activation Complete Rabbit Clock System.");
+  ESP_LOGI(TAG, "Activation Complete Hare Tortoise Clock System.");
 
   while (true) {
     Util::SleepMillisecond(1000);
   }
 }
 
-void RabbitClock::CreateBLEService() {
+void HareTortoiseClock::CreateBLEService() {
   // Create BleTimeCharacteristic 157c64df-ca4b-4647-b26b-4ddc2ab42797
   constexpr esp_gatt_char_prop_t time_char_property =
       ESP_GATT_CHAR_PROP_BIT_READ | ESP_GATT_CHAR_PROP_BIT_WRITE;
@@ -114,23 +114,23 @@ void RabbitClock::CreateBLEService() {
   ble_device->StartAdvertising();
 }
 
-void RabbitClock::SetUnixTime(const std::time_t epoc) {
+void HareTortoiseClock::SetUnixTime(const std::time_t epoc) {
   if (clock_management_task_) {
     clock_management_task_->SetUnixTime(epoc);
   }
 }
 
-void RabbitClock::EmergencyStop() {
+void HareTortoiseClock::EmergencyStop() {
   if (clock_management_task_) {
     clock_management_task_->EmergencyStop();
   }
 }
 
-std::time_t RabbitClock::GetUnixTime() const {
+std::time_t HareTortoiseClock::GetUnixTime() const {
   if (clock_management_task_) {
     return clock_management_task_->GetUnixTime();
   }
   return 0;
 }
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem

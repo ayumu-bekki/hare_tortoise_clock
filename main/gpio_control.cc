@@ -1,4 +1,4 @@
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -11,7 +11,7 @@
 
 #include "logger.h"
 
-namespace RabbitClockSystem::GPIO {
+namespace HareTortoiseClockSystem::GPIO {
 
 /// Init GPIO ISR Service
 void InitGpioIsrService() { gpio_install_isr_service(0); }
@@ -59,4 +59,4 @@ bool GetLevel(const gpio_num_t gpio_number) {
   return gpio_get_level(gpio_number) != 0;
 }
 
-}  // namespace RabbitClockSystem::GPIO
+}  // namespace HareTortoiseClockSystem::GPIO

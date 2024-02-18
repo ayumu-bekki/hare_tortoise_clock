@@ -1,6 +1,6 @@
 #ifndef BLE_DEVICE_H_
 #define BLE_DEVICE_H_
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -14,7 +14,7 @@
 #include <memory>
 #include <vector>
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
 class BleCharacteristicInterface {
  public:
@@ -71,6 +71,6 @@ class BleDevice final {
   std::vector<BleServiceInterfaceSharedPtr> services_;
 };
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem
 
 #endif  // BLE_DEVICE_H_

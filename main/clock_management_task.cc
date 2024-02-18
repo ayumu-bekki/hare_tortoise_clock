@@ -1,4 +1,4 @@
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
@@ -10,11 +10,11 @@
 #include "gpio_control.h"
 #include "logger.h"
 #include "message_queue.h"
-#include "rabbit_clock_interface.h"
+#include "hare_tortoise_clock_interface.h"
 #include "stepper_motor_util.h"
 #include "util.h"
 
-namespace RabbitClockSystem {
+namespace HareTortoiseClockSystem {
 
 constexpr int32_t HALF_DAY_HOUR = 12;
 
@@ -58,9 +58,9 @@ const std::function<void(ClockManagementTask&)>
 };
 
 ClockManagementTask::ClockManagementTask(
-    const RabbitClockInterfaceWeakPtr rabbit_clock_interface)
+    const HareTortoiseClockInterfaceWeakPtr hare_tortoise_clock_interface)
     : Task(std::string(TASK_NAME).c_str(), PRIORITY, CORE_ID),
-      rabbit_clock_interface_(std::move(rabbit_clock_interface)),
+      hare_tortoise_clock_interface_(std::move(hare_tortoise_clock_interface)),
       clock_status_(STATUS_NONE),
       stepper_motor_hour_(),
       stepper_motor_minute_(),
@@ -415,4 +415,4 @@ int32_t ClockManagementTask::CalcMinutePos(const int32_t min) const {
   return POSITION_CLOCK_START_MM + (minute_ * CLOCK_MINUTE_MM);
 }
 
-}  // namespace RabbitClockSystem
+}  // namespace HareTortoiseClockSystem

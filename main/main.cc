@@ -1,10 +1,10 @@
-// ESP32 Rabbit Clock
+// ESP32 Hare Tortoise Clock
 // (C)2024 bekki.jp
 
 // Include ----------------------
-#include "rabbit_clock.h"
+#include "hare_tortoise_clock.h"
 
 /// Entry Point
 extern "C" void app_main() {
-  std::make_shared<RabbitClockSystem::RabbitClock>()->Start();
+  std::make_shared<HareTortoiseClockSystem::HareTortoiseClock>()->Start();
 }
