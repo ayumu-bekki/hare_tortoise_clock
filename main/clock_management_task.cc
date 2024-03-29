@@ -35,17 +35,19 @@ constexpr uint32_t CLOCK_MINUTE_MM = CLOCK_LENGTH_MM / 60;
 /// 動作スピード(周波数) (AT2100 (1/16step) MAX 20khz) ----
 // ポジションリセット時
 constexpr uint32_t RESET_MOVE_HZ = 3000;
+// 時間設定時
+constexpr uint32_t SET_TIME_MOVE_HZ = 3000;
 // 通常挙動
-constexpr uint32_t NORMAL_MOVE_HZ = 3000;
+constexpr uint32_t NORMAL_MOVE_HZ = 800;
 // Minite動作速度
-constexpr uint32_t MINUTE_MOVE_HZ = 1000;
+constexpr uint32_t MINUTE_MOVE_HZ = 800;
 // Minite戻り速度
-constexpr uint32_t MINUTE_RETURN_MOVE_HZ = 3000;
+constexpr uint32_t MINUTE_RETURN_MOVE_HZ = 800;
 /// Hour進み速度
 constexpr uint32_t HOUR_MOVE_HZ =
     (MINUTE_RETURN_MOVE_HZ / HALF_DAY_HOUR);  // - 30; // 補正
 /// Hour動作速度
-constexpr uint32_t HOUR_MOVE_SLOW_HZ = 200;
+constexpr uint32_t HOUR_MOVE_SLOW_HZ = 400;
 
 const std::function<void(ClockManagementTask&)>
     ClockManagementTask::UPDATE_TASKS[MAX_CLOCK_STATUS] = {
@@ -109,7 +111,7 @@ void ClockManagementTask::TaskInitialize() {
   ESP_LOGI(TAG, "Start Initialize ----------");
 
   // モーター位置をリセット
-  if (!ResetAllPosition()) {
+  if (!ResetAllPosition(RESET_MOVE_HZ)) {
     ESP_LOGE(TAG, "Failed Reset Position.");
     clock_status_ = STATUS_ERROR;
     return;
@@ -141,8 +143,8 @@ void ClockManagementTask::TaskSetting() {
                  false);
 
   // HourとMinuteを同時に動かす
-  if (!SetBothPosition(CalcHourPos(hour_), NORMAL_MOVE_HZ,
-                       CalcMinutePos(minute_), NORMAL_MOVE_HZ)) {
+  if (!SetBothPosition(CalcHourPos(hour_), SET_TIME_MOVE_HZ,
+                       CalcMinutePos(minute_), SET_TIME_MOVE_HZ)) {
     ESP_LOGE(TAG, "Failed Motor Error.");
     clock_status_ = STATUS_ERROR;
     return;
@@ -191,7 +193,7 @@ void ClockManagementTask::NextHour() {
   }
 
   // Sleep (5sec)
-  Util::SleepMillisecond(5000);
+  Util::SleepMillisecond(2000);
 
   // Minuteを60秒の位置まで一旦戻す(次の同時戻しと同じ速度で)
   if (SetMinutePosition(POSITION_CLOCK_END_MM, MINUTE_RETURN_MOVE_HZ) !=
@@ -234,18 +236,18 @@ void ClockManagementTask::Next12Hour() {
     return;
   }
 
-  // Sleep (5sec)
-  Util::SleepMillisecond(5000);
+  // Sleep (2sec)
+  Util::SleepMillisecond(2000);
 
   // HourとMinuteをリセット位置に戻す
-  if (!ResetAllPosition()) {
+  if (!ResetAllPosition(MINUTE_RETURN_MOVE_HZ)) {
     ESP_LOGE(TAG, "Failed Reset Position.");
     clock_status_ = STATUS_ERROR;
     return;
   }
 
   // Sleep (1sec)
-  Util::SleepMillisecond(1000);
+  //Util::SleepMillisecond(1000);
 
   // Minuteを0位置に進める
   if (SetMinutePosition(POSITION_CLOCK_START_MM, NORMAL_MOVE_HZ) !=
@@ -255,8 +257,8 @@ void ClockManagementTask::Next12Hour() {
     return;
   }
 
-  // Sleep (2sec)
-  Util::SleepMillisecond(2000);
+  // Sleep (1sec)
+  Util::SleepMillisecond(1000);
 
   // Hourをゆっくり0位置に進める
   if (SetHourPosition(POSITION_CLOCK_START_MM, HOUR_MOVE_SLOW_HZ) !=
@@ -333,7 +335,7 @@ MoveResult ClockManagementTask::SetMinutePosition(
   return move_result;
 }
 
-bool ClockManagementTask::ResetAllPosition() {
+bool ClockManagementTask::ResetAllPosition(const uint32_t move_hz) {
   ESP_LOGI(TAG, "Begin Reset Position");
 
   if (!stepper_motor_hour_ || !stepper_motor_minute_) {
@@ -342,12 +344,12 @@ bool ClockManagementTask::ResetAllPosition() {
 
   MoveResultFuture hour_reset_future = stepper_motor_hour_->ExecMoveAsync(
       StepperMotorExecInfo(RotateDir::ROTATE_LEFT,
-                           StepperMotorUtil::FrequencyToTick(RESET_MOVE_HZ),
+                           StepperMotorUtil::FrequencyToTick(move_hz),
                            StepperMotorUtil::MMtoStep(POSITION_RESET_MOVE_MM)));
 
   MoveResultFuture minute_reset_future = stepper_motor_minute_->ExecMoveAsync(
       StepperMotorExecInfo(RotateDir::ROTATE_LEFT,
-                           StepperMotorUtil::FrequencyToTick(RESET_MOVE_HZ),
+                           StepperMotorUtil::FrequencyToTick(move_hz),
                            StepperMotorUtil::MMtoStep(POSITION_RESET_MOVE_MM)));
 
   const MoveResult hour_reset_result = hour_reset_future.get();

@@ -46,7 +46,7 @@ class ClockManagementTask final : public Task {
   std::time_t GetUnixTime() const;
 
  private:
-  bool ResetAllPosition();
+  bool ResetAllPosition(const uint32_t move_hz);
   bool SetBothPosition(const uint32_t hour_pos, const uint32_t hour_hz,
                        const uint32_t minute_pos, const uint32_t minute_hz);
   MoveResult SetHourPosition(const uint32_t position_left_mm,
