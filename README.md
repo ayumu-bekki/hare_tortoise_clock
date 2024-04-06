@@ -1,6 +1,8 @@
 # ノウサギとリクガメの時計
 
 ESP32でステッピングモーターを制御して直線上に時・分を示す壁掛け時計。
+http://blog.bekki.jp/article/190781348.html
+![Device](docs/device.jpg)
 
 ## 設定方法
 
@@ -48,48 +50,3 @@ ESP32でステッピングモーターを制御して直線上に時・分を示
 ### ステッカー
 
 [本体貼付用(psd)](docs/hare_tortoise_clock_sticker.psd)
-
-## 開発メモ
-
-### ステッピングモーター駆動
-esp-idfにPWM(ledc mcpwm)が存在するが、パルス数調整ができないためステッピングモーター制御には利用できない。
-ウェブを彷徨うとGPIO + nopを組み合わせる方法があり、動作はするもののCPUリソースを使い果たすため2台同時制御ができないことから、この方法も却下。
-General Purpose Timerの割り込みでGPIOをOn/Offする仕組みで実装しました。オシロスコープで確認したらちゃんと精度が出ている。
-
-ステッピングモーターの動作は別コアで非同期で動かしたかった。初めはあらかじめタスクを作ってQueueでWakeUpする仕組みにしていたが
-esp_pthread_set_cfgでスレッド作成時のコアを指定できることが分かったので、std::asyncを利用する方法に変更。
-https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/pthread.html
-
-ステッピングモータードライバーは設定を変更することでA4988やTMC2208でも動作しますが、これらはモーターからの音がうるさく時計用途には微妙。
-
-ステッピングモーター制御については以下の記事を参考にした。
-https://howtomechatronics.com/tutorials/arduino/how-to-control-stepper-motor-with-a4988-driver-and-arduino/
-
-
-### Bluetooth Low Energy対応
-物理ボタンを設置したくなかったので、Bluetooth Low Energyから設定・デモ動作を行えるようにしました。
-
-[Bluetooth Low Energyをはじめよう (Make:PROJECTS) ](https://www.amazon.co.jp/dp/4873117135)を購入したが、Webにある記事で十分だった。
-Bluetooth Low Energyについては以下記事で学びました。
-https://www.musen-connect.co.jp/blog/course/trial-production/ble-beginner-1/
-
-クライアントはBlueJellyを利用
-https://monomonotech.jp/kurage/webbluetooth/getting_started.html
-https://github.com/electricbaka/bluejelly
-
-### その他・メモ
-
-#### ESP32シリアルポート指定でのflash/monitor
-
-BOOTボタンを押しながらENボタンを押す
-
-idf.py flash -p /dev/cu.usbserial-110 -b 115200
-
-idf.py monitor -p /dev/cu.usbserial-110 -b 115200
-
-#### ステッピングモーター17hs08 1004s配線
-
-- 2B (B- Black)
-- 2A (B+ Grren)
-- 1A (A+ Blue)
-- 1B (A- Red)
